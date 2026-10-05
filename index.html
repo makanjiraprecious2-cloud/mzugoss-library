@@ -222,7 +222,7 @@ LOGIN
 
  height:100%;
 
- animation:slides 18s infinite
+ animation:slides 3s infinite
 
 }
 
@@ -242,11 +242,11 @@ LOGIN
 
 @keyframes slides{
 
- 0%,27%{transform:translateX(0)}
+ 0%,30%{transform:translateX(0)}
 
- 33%,60%{transform:translateX(-33.333%)}
+ 33%,63%{transform:translateX(-33.333%)}
 
- 66%,93%{transform:translateX(-66.666%)}
+ 66%,96%{transform:translateX(-66.666%)}
 
  100%{transform:translateX(0)}
 
@@ -257,6 +257,13 @@ LOGIN
 .welcome-text{
 
  position:absolute;
+
+ top:0;
+ bottom:0;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
 
  top:35px;
 
@@ -637,6 +644,9 @@ DASHBOARD SELECTOR
  color:var(--blue)
 
 }
+
+.role-heading{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}.role-picture{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block}.role-heading h2{margin:0}.welcome-text h1{font-size:34px;line-height:1.15;margin:0 0 10px}.welcome-text p{margin:0 0 8px}.welcome-text button{margin-top:25px !important;padding:15px 45px;border:0;border-radius:8px;background:#27ae60;color:#fff;font-size:18px;font-weight:bold;cursor:pointer}.welcome-text button:hover{background:#219150}
+
 
 
 
@@ -2178,6 +2188,14 @@ MESSAGE DASHBOARDS
 
 
 /* =========================================================
+ALUMNI TABS
+========================================================= */
+.alumni-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.alumni-tab{background:#dfe7ef;color:var(--blue);border:0;padding:12px 18px;border-radius:7px;font-weight:bold}
+.alumni-tab.active{background:var(--blue);color:#fff}
+.alumni-book-panel{margin-top:10px}
+
+/* =========================================================
 
 FOOTER
 
@@ -2370,88 +2388,19 @@ SYSTEM LOGIN
 
 
 <div id="loginScreen">
-
-
-
  <div class="login-background">
-
   <div class="background-track">
-
-   <img src="hie mzugos.jpg" alt="MZUGOSS">
-
-   <img src="images (1).jfif" alt="MZUGOSS">
-
-   <img src="download.jfif" alt="MZUGOSS">
-
+   <img src="1.jfif" alt="School library">
+   <img src="2.jfif" alt="Library shelves">
+   <img src="hie mzugos.jpg" alt="Books">
   </div>
-
  </div>
-
-
-
  <div class="welcome-text">
-
   <h1>WELCOME TO MZUZU GOVERNMENT SECONDARY SCHOOL LIBRARY</h1>
-
   <p>MZUGOSS School Library Management System</p>
-
+  <button onclick="continueToDashboards()" style="margin-top:25px;padding:15px 45px;border:0;border-radius:8px;background:#27ae60;color:#fff;font-size:18px;font-weight:bold;cursor:pointer">Continue</button>
  </div>
-
-
-
- <div class="login-box">
-
-
-
-  <img src="MZUGOSS LOGO.png"
-
-       class="login-logo"
-
-       alt="MZUGOSS Logo">
-
-
-
-  <h1>MZUGOSS</h1>
-
-
-
-  <p>School Library Management System</p>
-
-
-
-  <p><strong>Enter system password</strong></p>
-
-
-
-  <input
-
-   id="systemPassword"
-
-   type="password"
-
-   placeholder="Enter system password"
-
-   autocomplete="off"
-
-   onkeypress="if(event.key==='Enter')login()">
-
-
-
-  <button onclick="login()">🔐 Continue</button>
-
-
-
-  <p id="loginError" class="error"></p>
-
-
-
- </div>
-
 </div>
-
-
-
-
 
 <!-- =========================================================
 
@@ -2502,14 +2451,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-
-
-
-   <div class="icon">📚</div>
-
-
-
-   <h2>Librarian</h2>
+   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Librarian"><h2>Librarian</h2></div>
 
 
 
@@ -2542,14 +2484,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-
-
-
-   <div class="icon">🎓</div>
-
-
-
-   <h2>Student</h2>
+   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Student"><h2>Student</h2></div>
 
 
 
@@ -2582,14 +2517,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-
-
-
-   <div class="icon">👨‍💼</div>
-
-
-
-   <h2>Administrator</h2>
+   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Administrator"><h2>Administrator</h2></div>
 
 
 
@@ -2629,7 +2557,7 @@ DASHBOARD SELECTOR
 
   onclick="logout()">
 
-  🔒 Logout
+  Logout
 
  </button>
 
@@ -2685,15 +2613,15 @@ LIBRARIAN SYSTEM
 
 
 
-  <button onclick="showPage('home')">🏠 Home</button>
+  <button onclick="showPage('home')"> Home</button>
 
 
 
-  <button onclick="showPage('books')">📖 Books</button>
+  <button onclick="showPage('books')"> Books</button>
 
 
 
-  <button onclick="showPage('borrowed')">📚 Borrowed</button>
+  <button onclick="showPage('borrowed')"> Borrowed</button>
 
 
 
@@ -2701,7 +2629,7 @@ LIBRARIAN SYSTEM
 
   <button onclick="showPage('messages')">
 
-   🔔 Messages
+    Messages
 
    <span id="messageBadge"></span>
 
@@ -2711,7 +2639,7 @@ LIBRARIAN SYSTEM
 
   <button onclick="showPage('addBook')">
 
-   ➕ Add Book
+    Add Book
 
   </button>
 
@@ -2724,7 +2652,7 @@ LIBRARIAN SYSTEM
    style="display:none"
    onclick="openAdminFromLibrarian()">
 
-   👨‍💼 Admin Panel
+   ‍ Admin Panel
 
   </button>
 
@@ -2732,7 +2660,7 @@ LIBRARIAN SYSTEM
 
   <button onclick="backToDashboards()">
 
-   🔙 Dashboards
+    Dashboards
 
   </button>
 
@@ -2764,7 +2692,7 @@ LIBRARIAN HOME
 
 
 
-  <h1>📚 MZUGOSS School Library</h1>
+  <h1> MZUGOSS School Library</h1>
 
 
 
@@ -2856,7 +2784,7 @@ BOOKS
 
 
 
- <h1>📖 Library Books</h1>
+ <h1> Library Books</h1>
 
 
 
@@ -2876,7 +2804,7 @@ BOOKS
 
   <button onclick="displayBooks()">
 
-   🔍 Search
+    Search
 
   </button>
 
@@ -2912,7 +2840,7 @@ BORROWED
 
 
 
-  <h1>📚 Borrowed Books By Class</h1>
+  <h1> Borrowed Books By Class</h1>
 
 
 
@@ -2932,7 +2860,7 @@ BORROWED
 
 
 
-    <div class="class-icon">🎓</div>
+    <div class="class-icon"></div>
 
 
 
@@ -2966,7 +2894,7 @@ BORROWED
 
 
 
-    <div class="class-icon">🎓</div>
+    <div class="class-icon"></div>
 
 
 
@@ -3000,7 +2928,7 @@ BORROWED
 
 
 
-    <div class="class-icon">🎓</div>
+    <div class="class-icon"></div>
 
 
 
@@ -3034,7 +2962,7 @@ BORROWED
 
 
 
-    <div class="class-icon">🎓</div>
+    <div class="class-icon"></div>
 
 
 
@@ -3142,7 +3070,7 @@ MESSAGES
 
 
 
- <h1>🔔 Library Messages</h1>
+ <h1> Library Messages</h1>
 
 
 
@@ -3160,7 +3088,7 @@ MESSAGES
 
   onclick="clearMessages()">
 
-  🗑️ Clear All Messages
+   Clear All Messages
 
  </button>
 
@@ -3180,7 +3108,7 @@ MESSAGES
 
 
 
-   <div class="message-icon">⚠️</div>
+   <div class="message-icon"></div>
 
 
 
@@ -3222,7 +3150,7 @@ MESSAGES
 
 
 
-   <div class="message-icon">✅</div>
+   <div class="message-icon"></div>
 
 
 
@@ -3264,7 +3192,7 @@ MESSAGES
 
 
 
-   <div class="message-icon">📩</div>
+   <div class="message-icon"></div>
 
 
 
@@ -3312,7 +3240,7 @@ MESSAGES
 
    onclick="showMessageSection('overdueMessages')">
 
-   ⚠️ Overdue
+    Overdue
 
   </button>
 
@@ -3324,7 +3252,7 @@ MESSAGES
 
    onclick="showMessageSection('returnedMessages')">
 
-   ✅ Returned
+    Returned
 
   </button>
 
@@ -3336,7 +3264,7 @@ MESSAGES
 
    onclick="showMessageSection('requestMessages')">
 
-   📩 Requests
+    Requests
 
   </button>
 
@@ -3360,7 +3288,7 @@ MESSAGES
 
 
 
-  <h2>⚠️ Overdue Students</h2>
+  <h2> Overdue Students</h2>
 
 
 
@@ -3386,7 +3314,7 @@ MESSAGES
 
 
 
-  <h2>✅ Returned Books</h2>
+  <h2> Returned Books</h2>
 
 
 
@@ -3412,7 +3340,7 @@ MESSAGES
 
 
 
-  <h2>📩 Student Requests</h2>
+  <h2> Student Requests</h2>
 
 
 
@@ -3446,7 +3374,7 @@ ADD BOOK
 
 
 
-  <h1>➕ Add New Book</h1>
+  <h1> Add New Book</h1>
 
 
 
@@ -3480,7 +3408,7 @@ ADD BOOK
 
     onclick="openBarcodeScanner('add')">
 
-    📷 Scan
+     Scan
 
    </button>
 
@@ -3590,13 +3518,17 @@ ADD BOOK
 
    <option>Other</option>
 
+  <label>Shelf Number</label>
+  <input id="bookShelfNumber" placeholder="e.g. S-03">
 
+  <label>Shelf Section</label>
+  <input id="bookShelfSection" placeholder="e.g. Science">
 
-  </select>
+  <label>Shelf Row</label>
+  <input id="bookShelfRow" placeholder="e.g. Row 2">
 
-
-
-
+  <label>Shelf Position</label>
+  <input id="bookShelfPosition" placeholder="e.g. Position 15">
 
   <label>Quantity</label>
 
@@ -3618,7 +3550,7 @@ ADD BOOK
 
   <button onclick="addBook()">
 
-   💾 Add Book
+    Add Book
 
   </button>
 
@@ -3650,7 +3582,7 @@ BORROW FORM
 
 
 
-  <h2>📚 Borrow Book</h2>
+  <h2> Borrow Book</h2>
 
 
 
@@ -3728,7 +3660,7 @@ BORROW FORM
 
     onclick="openBarcodeScanner('borrow')">
 
-    📷 Scan
+     Scan
 
    </button>
 
@@ -3840,7 +3772,7 @@ BORROW FORM
 
 
 
-   ✅ Confirm Borrowing
+    Confirm Borrowing
 
 
 
@@ -3916,7 +3848,7 @@ STUDENT PANEL
 
 
 
-  <h1>🎓 MZUGOSS Student Panel</h1>
+  <h1> MZUGOSS Student Panel</h1>
 
 
 
@@ -3938,7 +3870,7 @@ STUDENT PANEL
 
 
 
-   <h2>🎓 Student Sign In</h2>
+   <h2> Student Sign In</h2>
 
 
 
@@ -3972,7 +3904,7 @@ STUDENT PANEL
 
    <button onclick="studentLogin()">
 
-    🔐 Sign In
+     Sign In
 
    </button>
 
@@ -4034,7 +3966,7 @@ STUDENT PANEL
 
    <button onclick="openStudentAccountSetup(false)">
 
-    ⚙️ Account Settings
+     Account Settings
 
    </button>
 
@@ -4042,7 +3974,7 @@ STUDENT PANEL
 
    <button onclick="studentLogout()">
 
-    🔒 Logout
+     Logout
 
    </button>
 
@@ -4050,7 +3982,7 @@ STUDENT PANEL
 
    <button onclick="backToDashboards()">
 
-    🔙 Dashboards
+     Dashboards
 
    </button>
 
@@ -4068,7 +4000,7 @@ STUDENT PANEL
 
 
 
-  <h2>📚 Available Books</h2>
+  <h2> Available Books</h2>
 
 
 
@@ -4100,7 +4032,7 @@ STUDENT PANEL
 
 
 
-  <h2>📩 My Borrow Requests</h2>
+  <h2> My Borrow Requests</h2>
 
 
 
@@ -4110,7 +4042,7 @@ STUDENT PANEL
 
 
 
-  <h2>📚 My Borrowed Books</h2>
+  <h2> My Borrowed Books</h2>
 
 
 
@@ -4144,7 +4076,7 @@ ADMIN PANEL
 
 
 
-  <h1>👨‍💼 MZUGOSS Administrator Panel</h1>
+  <h1>‍ MZUGOSS Administrator Panel</h1>
 
 
 
@@ -4168,7 +4100,7 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('adminDashboard')">
 
-    📊 Dashboard
+     Dashboard
 
    </button>
 
@@ -4176,7 +4108,7 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('registerStudent')">
 
-    ➕ Register Student
+     Register Student
 
    </button>
 
@@ -4184,7 +4116,7 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('bulkStudents')">
 
-    📥 Import Students
+     Import Students
 
    </button>
 
@@ -4192,7 +4124,7 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('bulkBooks')">
 
-    📚 Import Books
+     Import Books
 
    </button>
 
@@ -4200,7 +4132,23 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('studentRecords')">
 
-    👨‍🎓 Students
+    ‍ Students
+
+   </button>
+
+
+
+   <button onclick="showAdminSection('droppedStudents')">
+
+     Dropped Students
+
+   </button>
+
+
+
+   <button onclick="showAdminSection('alumniStudents')">
+
+     Alumni
 
    </button>
 
@@ -4208,7 +4156,7 @@ ADMIN PANEL
 
    <button onclick="showAdminSection('subjectStatistics')">
 
-    📊 Subjects
+     Subjects
 
    </button>
 
@@ -4218,7 +4166,7 @@ ADMIN PANEL
     onclick="openLibrarianFromAdmin()"
     style="background:var(--lightblue);color:#fff">
 
-    📚 Librarian Panel
+     Librarian Panel
 
    </button>
 
@@ -4226,7 +4174,7 @@ ADMIN PANEL
 
    <button onclick="backToDashboards()">
 
-    🔙 Dashboards
+     Dashboards
 
    </button>
 
@@ -4250,7 +4198,7 @@ ADMIN PANEL
 
 
 
-   <h2>📊 Library Overview</h2>
+   <h2> Library Overview</h2>
 
 
 
@@ -4344,7 +4292,7 @@ ADMIN PANEL
 
 
 
-    <h2>➕ Register Student</h2>
+    <h2> Register Student</h2>
 
 
 
@@ -4399,6 +4347,10 @@ ADMIN PANEL
 
 
     </select>
+
+
+
+
 
 
 
@@ -4462,7 +4414,7 @@ ADMIN PANEL
 
 
 
-     💾 Register Student
+      Register Student
 
 
 
@@ -4496,7 +4448,7 @@ ADMIN PANEL
 
 
 
-    <h2>📥 Import Students From File</h2>
+    <h2> Import Students From File</h2>
 
 
 
@@ -4578,7 +4530,7 @@ ADMIN PANEL
 
      font-weight:bold">
 
-     📥 Create Student Accounts
+      Create Student Accounts
 
     </button>
 
@@ -4604,7 +4556,7 @@ ADMIN PANEL
 
      border-radius:7px">
 
-     ⬇️ Download Student CSV Template
+     ⬇ Download Student CSV Template
 
     </button>
 
@@ -4640,7 +4592,7 @@ ADMIN PANEL
 
 
 
-    <h2>📚 Import Books From File</h2>
+    <h2> Import Books From File</h2>
 
 
 
@@ -4670,11 +4622,11 @@ ADMIN PANEL
 
      Example:
 
-     <code>Title,Author,Category,Barcode,Quantity</code>
+     <code>Title,Author,Category,Barcode,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity</code>
 
      <br>
 
-     <code>Things Fall Apart,Chinua Achebe,Literature,LIT003,5</code>
+     <code>Things Fall Apart,Chinua Achebe,Literature,LIT003,S-03,Literature,Row 2,Position 15,5</code>
 
      <br><br>
 
@@ -4718,7 +4670,7 @@ ADMIN PANEL
 
      font-weight:bold">
 
-     📚 Import Books
+      Import Books
 
     </button>
 
@@ -4744,7 +4696,7 @@ ADMIN PANEL
 
      border-radius:7px">
 
-     ⬇️ Download Book CSV Template
+     ⬇ Download Book CSV Template
 
     </button>
 
@@ -4776,7 +4728,7 @@ ADMIN PANEL
 
 
 
-   <h2>👨‍🎓 Students By Class</h2>
+   <h2>‍ Students By Class</h2>
 
 
 
@@ -4864,7 +4816,7 @@ ADMIN PANEL
 
       onclick="selectAllStudents()">
 
-      ☑️ Select All
+       Select All
 
      </button>
 
@@ -4878,7 +4830,19 @@ ADMIN PANEL
 
       onclick="deleteSelectedStudents()">
 
-      🗑️ Delete Selected
+       Delete Selected
+
+     </button>
+
+
+
+     <button
+
+      style="background:var(--purple);color:#fff;border:0;padding:10px 15px;border-radius:7px;font-weight:bold"
+
+      onclick="archiveAllForm4Students()">
+
+       Archive ALL Form 4 → ALUMNI
 
      </button>
 
@@ -4930,7 +4894,7 @@ ADMIN PANEL
 
 
 
-      🎓 Promote Form 1 → 2 → 3 → 4
+       Promote Form 1 → 2 → 3 → 4
 
 
 
@@ -4958,6 +4922,78 @@ ADMIN PANEL
 
 
 
+  <!-- DROPPED STUDENTS -->
+
+
+
+  <section
+
+   id="droppedStudents"
+
+   class="admin-section">
+
+
+
+   <h2> Dropped Students</h2>
+
+
+
+   <div class="search-box">
+
+    <input id="droppedSearch" placeholder="Search dropped students..." oninput="displayDroppedStudents()">
+
+    <button onclick="displayDroppedStudents()"> Search</button>
+
+   </div>
+
+
+
+   <div id="droppedStudentList"></div>
+
+
+
+  </section>
+
+
+
+  <!-- ALUMNI -->
+
+  <section id="alumniStudents" class="admin-section">
+
+   <h2>Alumni</h2>
+   <p>Select a school-year range to view alumni records.</p>
+
+   <div id="alumniYearDashboard" class="admin-class-grid"></div>
+
+   <div id="alumniStudentView" style="display:none">
+    <button class="back-btn" onclick="showAlumniYears()">Back to Alumni Years</button>
+    <h2 id="selectedAlumniYear"></h2>
+
+    <div class="alumni-tabs">
+     <button class="alumni-tab active" id="alumniNotReturnedTab" onclick="showAlumniBookTab('notReturned')">Students Who Have Not Returned Their Books</button>
+     <button class="alumni-tab" id="alumniReturnedTab" onclick="showAlumniBookTab('returned')">Students Who Returned Their Books</button>
+    </div>
+
+    <div id="alumniNotReturnedPanel" class="alumni-book-panel">
+     <div class="search-box">
+      <input id="alumniNotReturnedSearch" placeholder="Search student, book number or title..." oninput="displayAlumniBookRecords('notReturned')">
+      <button onclick="displayAlumniBookRecords('notReturned')">Search</button>
+     </div>
+     <div id="alumniNotReturnedList"></div>
+    </div>
+
+    <div id="alumniReturnedPanel" class="alumni-book-panel" style="display:none">
+     <div class="search-box">
+      <input id="alumniReturnedSearch" placeholder="Search student, book number or title..." oninput="displayAlumniBookRecords('returned')">
+      <button onclick="displayAlumniBookRecords('returned')">Search</button>
+     </div>
+     <div id="alumniReturnedList"></div>
+    </div>
+   </div>
+  </section>
+
+
+
   <!-- SUBJECTS -->
 
 
@@ -4970,7 +5006,7 @@ ADMIN PANEL
 
 
 
-   <h2>📚 Books Per Subject / Category</h2>
+   <h2> Books Per Subject / Category</h2>
 
 
 
@@ -5016,7 +5052,7 @@ LIBRARIAN PASSWORD MODAL
 
 
 
-  <h2>🔐 Librarian Access</h2>
+  <h2> Librarian Access</h2>
 
 
 
@@ -5118,7 +5154,7 @@ ADMIN PASSWORD MODAL
 
 
 
-  <h2>🔐 Administrator Access</h2>
+  <h2> Administrator Access</h2>
 
 
 
@@ -5212,7 +5248,7 @@ RETURN MODAL
 
 
 
-  <h2>🔐 Authorisation Required</h2>
+  <h2> Authorisation Required</h2>
 
 
 
@@ -5340,11 +5376,14 @@ REQUEST MODAL
 
 
 
-  <h2>📩 Borrow Book Request</h2>
+  <h2> Borrow Book Request</h2>
 
 
 
   <div id="requestBookDetails"></div>
+
+      <label style="display:block;font-weight:bold;margin-top:12px">Preferred Borrow Date</label>
+      <input type="date" id="requestBorrowDate" style="width:100%;padding:11px;border:1px solid #ccc;border-radius:7px">
 
 
 
@@ -5418,7 +5457,7 @@ BARCODE CAMERA MODAL
 
 
 
-  <h2>👤 Set Up Your Library Account</h2>
+  <h2> Set Up Your Library Account</h2>
 
 
 
@@ -5498,7 +5537,7 @@ BARCODE CAMERA MODAL
 
    onclick="saveStudentAccountChanges()">
 
-   💾 Save Changes
+    Save Changes
 
   </button>
 
@@ -5538,7 +5577,7 @@ BARCODE CAMERA MODAL
 
 
 
-  <h2>📷 Barcode Scanner</h2>
+  <h2> Barcode Scanner</h2>
 
 
 
@@ -5851,6 +5890,18 @@ let students =
 
 
 
+let droppedStudents =
+
+ JSON.parse(localStorage.getItem("mzugossDroppedStudents")) || [];
+
+
+
+let alumniStudents =
+
+ JSON.parse(localStorage.getItem("mzugossAlumniStudents")) || [];
+
+
+
 
 
 let requests =
@@ -5908,6 +5959,78 @@ function normaliseStudentAccounts(){
    student.mustChangeCredentials !== false
 
  }));
+
+ saveData();
+
+}
+
+
+
+function normaliseStudentHistory(){
+
+ students = students.map(student => ({
+
+  ...student,
+
+  startYear:
+
+   student.startYear ||
+
+   student.yearStarted ||
+
+   ""
+
+ }));
+
+
+
+ droppedStudents = droppedStudents.map(student => ({
+
+  ...student,
+
+  startYear:
+
+   student.startYear ||
+
+   student.yearStarted ||
+
+   "",
+
+  goneYear:
+
+   student.goneYear ||
+
+   student.droppedYear ||
+
+   ""
+
+ }));
+
+
+
+ alumniStudents = alumniStudents.map(student => ({
+
+  ...student,
+
+  startYear:
+
+   student.startYear ||
+
+   student.yearStarted ||
+
+   "",
+
+  goneYear:
+
+   student.goneYear ||
+
+   student.endYear ||
+
+   ""
+
+ }));
+
+
 
  saveData();
 
@@ -5976,6 +6099,26 @@ function saveData(){
   "mzugossStudents",
 
   JSON.stringify(students)
+
+ );
+
+
+
+ localStorage.setItem(
+
+  "mzugossDroppedStudents",
+
+  JSON.stringify(droppedStudents)
+
+ );
+
+
+
+ localStorage.setItem(
+
+  "mzugossAlumniStudents",
+
+  JSON.stringify(alumniStudents)
 
  );
 
@@ -6101,126 +6244,20 @@ LOGIN
 
 
 
-function login(){
-
-
-
- const password =
-
-  document.getElementById(
-
-   "systemPassword"
-
-  ).value;
-
-
-
- if(password === SYSTEM_PASSWORD){
-
-
-
-  sessionStorage.setItem(
-
-   "mzugossLoggedIn",
-
-   "true"
-
-  );
-
-  activeRole = "system";
-  sessionStorage.setItem("mzugossRole", activeRole);
-
-
-
-  document.getElementById(
-
-   "loginScreen"
-
-  ).style.display = "none";
-
-
-
-  document.getElementById(
-
-   "mainSystem"
-
-  ).style.display = "block";
-
-
-
-  checkOverdueBooks();
-
-
-
- }else{
-
-
-
-  document.getElementById(
-
-   "loginError"
-
-  ).textContent =
-
-   "❌ Incorrect password.";
-
-
-
- }
-
-
-
-}
-
-
-
-
-
-/* =========================================================
-
-RESTORE LOGIN
-
-========================================================= */
-
-
-
-if(
-
- sessionStorage.getItem(
-
-  "mzugossLoggedIn"
-
- ) === "true"
-
-){
-
-
-
- document.getElementById(
-
-  "loginScreen"
-
- ).style.display = "none";
-
-
-
- document.getElementById(
-
-  "mainSystem"
-
- ).style.display = "block";
-
-
-
+function continueToDashboards(){
+ document.getElementById("loginScreen").style.display = "none";
+ document.getElementById("mainSystem").style.display = "block";
+ sessionStorage.setItem("mzugossLoggedIn","true");
+ activeRole = "system";
+ sessionStorage.setItem("mzugossRole", activeRole);
  checkOverdueBooks();
-
-
-
 }
 
-
-
-
+if(sessionStorage.getItem("mzugossLoggedIn") === "true"){
+ document.getElementById("loginScreen").style.display = "none";
+ document.getElementById("mainSystem").style.display = "block";
+ checkOverdueBooks();
+}
 
 /* =========================================================
 
@@ -6337,7 +6374,7 @@ function verifyLibrarianPassword(){
 
   ).textContent =
 
-   "❌ Incorrect librarian password.";
+   " Incorrect librarian password.";
 
 
 
@@ -6587,7 +6624,7 @@ function verifyAdminPassword(){
 
   ).textContent =
 
-   "❌ Incorrect administrator password.";
+   " Incorrect administrator password.";
 
 
 
@@ -7047,7 +7084,7 @@ function displayBooks(){
 
    <h3>
 
-    📕 ${escapeHTML(book.title)}
+     ${escapeHTML(book.title)}
 
    </h3>
 
@@ -7084,6 +7121,13 @@ function displayBooks(){
 
 
    <p>
+    <strong>📍 Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
+   </p>
+   <p>
+    <strong>Location:</strong> ${escapeHTML(book.shelfRow || "Row not assigned")}${book.shelfPosition ? `, ${escapeHTML(book.shelfPosition)}` : ""}
+   </p>
+
+   <p>
 
     <strong>Available:</strong>
 
@@ -7111,7 +7155,7 @@ function displayBooks(){
 
     ${book.available > 0
 
-      ? "📚 Borrow"
+      ? " Borrow"
 
       : "Unavailable"}
 
@@ -7131,7 +7175,7 @@ function displayBooks(){
 
 
 
-    🗑️ Delete
+     Delete
 
 
 
@@ -7208,6 +7252,11 @@ function addBook(){
   ).value;
 
 
+
+ const shelfNumber = document.getElementById("bookShelfNumber").value.trim();
+ const shelfSection = document.getElementById("bookShelfSection").value.trim();
+ const shelfRow = document.getElementById("bookShelfRow").value.trim();
+ const shelfPosition = document.getElementById("bookShelfPosition").value.trim();
 
  const quantity =
 
@@ -7303,7 +7352,13 @@ function addBook(){
 
   category,
 
+  shelfNumber,
 
+  shelfSection,
+
+  shelfRow,
+
+  shelfPosition,
 
   quantity,
 
@@ -7333,7 +7388,7 @@ function addBook(){
 
  showToast(
 
-  "✅ Book added successfully!"
+  " Book added successfully!"
 
  );
 
@@ -7617,7 +7672,7 @@ function lookupBookByBarcode(purpose){
 
 
 
-    ❌ Barcode not found in the MZUGOSS library catalogue.
+     Barcode not found in the MZUGOSS library catalogue.
 
 
 
@@ -7699,7 +7754,7 @@ function lookupBookByBarcode(purpose){
 
 
 
-    ✅ Existing book found.
+     Existing book found.
 
 
 
@@ -7781,7 +7836,7 @@ function lookupBookByBarcode(purpose){
 
 
 
-     ❌ ${escapeHTML(book.title)}
+      ${escapeHTML(book.title)}
 
      has no available copies.
 
@@ -7807,7 +7862,7 @@ function lookupBookByBarcode(purpose){
 
 
 
-     ✅ Book verified.
+      Book verified.
 
 
 
@@ -8015,7 +8070,7 @@ function deleteBook(id){
 
  showToast(
 
-  "🗑️ Book deleted",
+  " Book deleted",
 
   "var(--red)"
 
@@ -8131,7 +8186,7 @@ function borrowBook(id){
 
 
 
-   ✅ Book selected and verified.
+    Book selected and verified.
 
 
 
@@ -8499,7 +8554,7 @@ function findBorrowStudent(){
 
 
 
-     ❌ Student not found in registry.
+      Student not found in registry.
 
 
 
@@ -8913,7 +8968,7 @@ function confirmBorrow(){
 
  showToast(
 
-  "✅ Book borrowed successfully!"
+  " Book borrowed successfully!"
 
  );
 
@@ -9529,7 +9584,7 @@ function openReturnModal(id){
 
 
 
-   ⚠️ Scan the returned book barcode.
+    Scan the returned book barcode.
 
    The barcode must match the borrowing record.
 
@@ -9741,7 +9796,7 @@ function lookupReturnBarcode(){
 
 
 
-    ❌ Barcode mismatch.
+     Barcode mismatch.
 
 
 
@@ -9823,7 +9878,7 @@ function lookupReturnBarcode(){
 
 
 
-    ❌ Book identity verification failed.
+     Book identity verification failed.
 
     The saved borrowing details do not match
 
@@ -9863,7 +9918,7 @@ function lookupReturnBarcode(){
 
 
 
-   ✅ Book verified successfully.
+    Book verified successfully.
 
 
 
@@ -9973,7 +10028,7 @@ function confirmReturnPassword(){
 
   ).textContent =
 
-   "❌ Incorrect system password.";
+   " Incorrect system password.";
 
 
 
@@ -9997,7 +10052,7 @@ function confirmReturnPassword(){
 
   ).textContent =
 
-   "❌ Scan and verify the correct book barcode before returning.";
+   " Scan and verify the correct book barcode before returning.";
 
 
 
@@ -10053,7 +10108,7 @@ function confirmReturnPassword(){
 
   ).textContent =
 
-   "❌ Original book record no longer exists.";
+   " Original book record no longer exists.";
 
 
 
@@ -10139,7 +10194,7 @@ function confirmReturnPassword(){
 
   text:
 
-   `✅ RETURNED: "${item.bookTitle}" returned by ${item.studentName} (${item.studentForm}). Barcode verified: ${item.bookNumber}`,
+   ` RETURNED: "${item.bookTitle}" returned by ${item.studentName} (${item.studentForm}). Barcode verified: ${item.bookNumber}`,
 
 
 
@@ -10197,7 +10252,7 @@ function confirmReturnPassword(){
 
  showToast(
 
-  "✅ Book returned and barcode verified."
+  " Book returned and barcode verified."
 
  );
 
@@ -10283,7 +10338,7 @@ function displayRequests(){
 
     <h3>
 
-     📩 Request from
+      Request from
 
      ${escapeHTML(req.studentName)}
 
@@ -10410,37 +10465,16 @@ function approveRequest(idx){
 
 
  const book =
-
-  books.find(
-
-   b =>
-
-    b.title.toLowerCase() ===
-
-    req.bookTitle.toLowerCase()
-
-  );
+  books.find(b => b.id === req.bookId) ||
+  books.find(b => b.title.toLowerCase() === req.bookTitle.toLowerCase());
 
 
 
 
 
- if(!book || book.available <= 0){
-
-
-
-  alert(
-
-   "Book is currently unavailable."
-
-  );
-
-
-
+ if(!book || (book.available <= 0 && !req.reserved)){
+  alert("Book is currently unavailable.");
   return;
-
-
-
  }
 
 
@@ -10525,45 +10559,17 @@ function approveRequest(idx){
 
 
 
- const borrowDate =
+ const borrowDate = req.borrowDate || new Date().toISOString().split("T")[0];
 
-  new Date()
+ const dueDate = req.dueDate || (() => {
+  const d = new Date(borrowDate + "T00:00:00");
+  d.setDate(d.getDate() + 14);
+  return d.toISOString().split("T")[0];
+ })();
 
-  .toISOString()
-
-  .split("T")[0];
-
-
-
-
-
- const due =
-
-  new Date();
-
-
-
- due.setDate(
-
-  due.getDate() + 14
-
- );
-
-
-
-
-
- const dueDate =
-
-  due.toISOString()
-
-  .split("T")[0];
-
-
-
-
-
- book.available--;
+ if(!req.reserved){
+  book.available--;
+ }
 
 
 
@@ -10651,7 +10657,7 @@ function approveRequest(idx){
 
   text:
 
-   `✅ APPROVED: ${req.studentName} was issued "${book.title}".`,
+   ` APPROVED: ${req.studentName} was issued "${book.title}".`,
 
 
 
@@ -10701,7 +10707,7 @@ function approveRequest(idx){
 
  showToast(
 
-  "✅ Request approved and book issued!"
+  " Request approved and book issued!"
 
  );
 
@@ -10757,7 +10763,7 @@ function rejectRequest(idx){
 
   text:
 
-   `❌ REJECTED: Request from ${req.studentName} for "${req.bookTitle}" was rejected.`,
+   ` REJECTED: Request from ${req.studentName} for "${req.bookTitle}" was rejected.`,
 
 
 
@@ -10803,7 +10809,7 @@ function rejectRequest(idx){
 
  showToast(
 
-  "❌ Request rejected",
+  " Request rejected",
 
   "var(--red)"
 
@@ -11087,7 +11093,7 @@ function displayOverdueMessages(){
 
   container.innerHTML =
 
-   "<p>✅ No students are currently overdue.</p>";
+   "<p> No students are currently overdue.</p>";
 
 
 
@@ -11125,7 +11131,7 @@ function displayOverdueMessages(){
 
    <h3>
 
-    ⚠️ ${escapeHTML(item.studentName)}
+     ${escapeHTML(item.studentName)}
 
    </h3>
 
@@ -11275,7 +11281,7 @@ function displayReturnedMessages(){
 
    <h3>
 
-    ✅ ${escapeHTML(item.studentName)}
+     ${escapeHTML(item.studentName)}
 
    </h3>
 
@@ -11423,7 +11429,7 @@ function displayRequestMessages(){
 
    <h3>
 
-    📩 ${escapeHTML(req.studentName)}
+     ${escapeHTML(req.studentName)}
 
    </h3>
 
@@ -11631,7 +11637,7 @@ function clearMessages(){
 
  showToast(
 
-  "🗑️ Message history cleared"
+  " Message history cleared"
 
  );
 
@@ -11933,7 +11939,7 @@ function studentLogin(){
 
   ).textContent =
 
-   "❌ Invalid name, library ID or password.";
+   " Invalid name, library ID or password.";
 
 
 
@@ -12306,7 +12312,7 @@ function saveStudentAccountChanges(){
  closeStudentAccountSetup();
 
  showToast(
-  "✅ Account details updated successfully!"
+  " Account details updated successfully!"
  );
 
 }
@@ -12423,7 +12429,7 @@ function displayStudentBooks(){
 
    <h3>
 
-    📕 ${escapeHTML(book.title)}
+     ${escapeHTML(book.title)}
 
    </h3>
 
@@ -12460,6 +12466,14 @@ function displayStudentBooks(){
 
 
    <p>
+    <strong>📍 Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
+   </p>
+
+   <p>
+    <strong>Location:</strong> ${escapeHTML(book.shelfRow || "Row not assigned")}${book.shelfPosition ? `, ${escapeHTML(book.shelfPosition)}` : ""}
+   </p>
+
+   <p>
 
     <strong>Available:</strong>
 
@@ -12479,7 +12493,7 @@ function displayStudentBooks(){
 
 
 
-    📩 Request Book
+     Request Book
 
 
 
@@ -12608,14 +12622,13 @@ function openStudentRequestModal(bookId){
 
 
   <p>
-
    <strong>Barcode:</strong>
-
-   ${escapeHTML(book.barcode)}
-
+   ${escapeHTML(book.barcode || "N/A")}
   </p>
-
-
+  <p><strong>📍 Shelf Number:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")}</p>
+  <p><strong>Section:</strong> ${escapeHTML(book.shelfSection || book.category || "Not assigned")}</p>
+  <p><strong>Row:</strong> ${escapeHTML(book.shelfRow || "Not assigned")}</p>
+  <p><strong>Position:</strong> ${escapeHTML(book.shelfPosition || "Not assigned")}</p>
 
  `;
 
@@ -12664,194 +12677,22 @@ SEND REQUEST
 
 
 function sendBorrowRequest(){
-
-
-
- if(
-
-  !selectedRequestBook ||
-
-  !loggedInStudent
-
- )
-
-  return;
-
-
-
-
-
- const existing =
-
-  requests.some(
-
-   r =>
-
-    r.libraryId ===
-
-    loggedInStudent.libraryId &&
-
-    r.bookTitle ===
-
-    selectedRequestBook.title
-
-  );
-
-
-
-
-
- if(existing){
-
-
-
-  alert(
-
-   "You have already requested this book."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- requests.unshift({
-
-
-
-  id:Date.now(),
-
-
-
-  bookTitle:
-
-   selectedRequestBook.title,
-
-
-
-  bookBarcode:
-
-   selectedRequestBook.barcode,
-
-
-
-  studentName:
-
-   loggedInStudent.name,
-
-
-
-  studentForm:
-
-   loggedInStudent.form,
-
-
-
-  libraryId:
-
-   loggedInStudent.libraryId,
-
-
-
-  date:
-
-   new Date().toLocaleString()
-
-
-
- });
-
-
-
-
-
- messages.unshift({
-
-
-
-  type:"request-message",
-
-
-
-  text:
-
-   `📩 REQUEST: ${loggedInStudent.name} (${loggedInStudent.form}) requested "${selectedRequestBook.title}"`,
-
-
-
-  date:
-
-   new Date().toLocaleString(),
-
-
-
-  studentName:
-
-   loggedInStudent.name,
-
-
-
-  studentId:
-
-   loggedInStudent.libraryId,
-
-
-
-  studentForm:
-
-   loggedInStudent.form,
-
-
-
-  bookTitle:
-
-   selectedRequestBook.title
-
-
-
- });
-
-
-
-
-
- saveData();
-
-
-
- closeRequestModal();
-
-
-
- displayStudentMyRequests();
-
-
-
- updateMessageCounts();
-
-
-
- showToast(
-
-  "✅ Request sent to librarian successfully!"
-
- );
-
-
-
+ if(!selectedRequestBook || !loggedInStudent) return;
+ const borrowDate = document.getElementById("requestBorrowDate").value;
+ if(!borrowDate){ alert("Please choose the date you want to borrow this book."); return; }
+ const today = new Date().toISOString().split("T")[0];
+ if(borrowDate < today){ alert("Borrow date cannot be in the past."); return; }
+ const existing = requests.some(r => r.libraryId === loggedInStudent.libraryId && r.bookTitle === selectedRequestBook.title);
+ if(existing){ alert("You have already requested this book."); return; }
+ if(selectedRequestBook.available <= 0){ alert("This book is no longer available."); return; }
+ selectedRequestBook.available--;
+ const due = new Date(borrowDate + "T00:00:00");
+ due.setDate(due.getDate() + 14);
+ const dueDate = due.toISOString().split("T")[0];
+ requests.unshift({id:Date.now(),bookId:selectedRequestBook.id,bookTitle:selectedRequestBook.title,bookBarcode:selectedRequestBook.barcode,shelfNumber:selectedRequestBook.shelfNumber || "",shelfSection:selectedRequestBook.shelfSection || selectedRequestBook.category || "",shelfRow:selectedRequestBook.shelfRow || "",shelfPosition:selectedRequestBook.shelfPosition || "",studentName:loggedInStudent.name,studentForm:loggedInStudent.form,libraryId:loggedInStudent.libraryId,borrowDate,dueDate,reserved:true,date:new Date().toLocaleString()});
+ messages.unshift({type:"request-message",text:`REQUEST: ${loggedInStudent.name} (${loggedInStudent.form}) requested "${selectedRequestBook.title}" for ${borrowDate}`,date:new Date().toLocaleString(),studentName:loggedInStudent.name,studentId:loggedInStudent.libraryId,studentForm:loggedInStudent.form,bookTitle:selectedRequestBook.title});
+ saveData(); updateStats(); closeRequestModal(); displayStudentMyRequests(); displayStudentBooks(); updateMessageCounts(); showToast("Request sent and one copy reserved.");
 }
-
-
-
-
 
 /* =========================================================
 
@@ -13337,6 +13178,34 @@ function showAdminSection(sectionId){
 
   sectionId ===
 
+  "droppedStudents"
+
+ )
+
+  displayDroppedStudents();
+
+
+
+ if(
+
+  sectionId ===
+
+  "alumniStudents"
+
+ ){
+
+  showAlumniYears();
+
+  showAlumniUnreturnedYears();
+
+ }
+
+
+
+ if(
+
+  sectionId ===
+
   "subjectStatistics"
 
  )
@@ -13558,169 +13427,21 @@ REGISTER STUDENT
 
 
 function registerStudent(){
-
-
-
- const name =
-
-  document.getElementById(
-
-   "newStudentName"
-
-  ).value.trim();
-
-
-
- const libraryId =
-
-  document.getElementById(
-
-   "newStudentLibraryId"
-
-  ).value.trim();
-
-
-
- const form =
-
-  document.getElementById(
-
-   "newStudentForm"
-
-  ).value;
-
-
-
- if(!name || !libraryId || !form){
-
-  alert(
-
-   "Please fill in all required student details."
-
-  );
-
-  return;
-
- }
-
-
-
- if(
-
-  students.some(
-
-   s =>
-
-    s.libraryId.toLowerCase() ===
-
-    libraryId.toLowerCase()
-
-  )
-
- ){
-
-  alert(
-
-   "Library ID already exists!"
-
-  );
-
-  return;
-
- }
-
-
-
- students.push({
-
-  id:Date.now(),
-
-  name,
-
-  libraryId,
-
-  form,
-
-  password:DEFAULT_STUDENT_PASSWORD,
-
-  photo:
-
-   tempPhotoUrl ||
-
-   DEFAULT_STUDENT_PHOTO,
-
-  mustChangeCredentials:true
-
- });
-
-
-
- saveData();
-
- updateStudentSuggestions();
-
- showToast(
-
-  "✅ Student registered successfully! Default password: " +
-
-  DEFAULT_STUDENT_PASSWORD
-
- );
-
-
-
- document.getElementById(
-
-  "newStudentName"
-
- ).value = "";
-
-
-
- document.getElementById(
-
-  "newStudentLibraryId"
-
- ).value = "";
-
-
-
- document.getElementById(
-
-  "newStudentForm"
-
- ).value = "";
-
-
-
- document.getElementById(
-
-  "newStudentPhoto"
-
- ).value = "";
-
-
-
- document.getElementById(
-
-  "studentPhotoPreview"
-
- ).src = "";
-
-
-
- tempPhotoUrl = "";
-
-
-
- displayAdminClasses();
-
- updateAdminDashboard();
-
+ const name=document.getElementById("newStudentName").value.trim();
+ const libraryId=document.getElementById("newStudentLibraryId").value.trim();
+ const form=document.getElementById("newStudentForm").value;
+ const startYear=new Date().getFullYear();
+ if(!name || !libraryId || !form){ alert("Please fill in the student's name, library ID and form."); return; }
+ if(students.some(s=>s.libraryId.toLowerCase()===libraryId.toLowerCase())){ alert("Library ID already exists!"); return; }
+ students.push({id:Date.now(),name,libraryId,form,startYear,password:DEFAULT_STUDENT_PASSWORD,photo:tempPhotoUrl||DEFAULT_STUDENT_PHOTO,mustChangeCredentials:true});
+ saveData(); updateStudentSuggestions();
+ showToast("Student registered successfully! Default password: " + DEFAULT_STUDENT_PASSWORD);
+ ["newStudentName","newStudentLibraryId","newStudentPhoto"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
+ document.getElementById("newStudentForm").value="";
+ tempPhotoUrl="";
+ const preview=document.getElementById("studentPhotoPreview"); if(preview)preview.src=DEFAULT_STUDENT_PHOTO;
+ displayAdminClasses(); updateAdminDashboard();
 }
-
-
-
 
 
 /* =========================================================
@@ -13872,6 +13593,18 @@ function importStudentsFromFile(){
      ["form","class","grade"]
     );
 
+   const startYearIndex =
+
+    findColumn(
+
+     headers,
+
+     ["startyear","yearstarted","entryyear"]
+
+    );
+
+
+
    if(nameIndex < 0 || idIndex < 0 || formIndex < 0)
     throw new Error(
      "Required columns are Name, Number and Form."
@@ -13891,6 +13624,16 @@ function importStudentsFromFile(){
 
     const form =
      String(row[formIndex] || "").trim();
+
+    const startYear =
+
+     startYearIndex >= 0
+
+      ? String(row[startYearIndex] || "").trim()
+
+      : "";
+
+
 
     if(!name || !libraryId || !form){
 
@@ -13954,6 +13697,8 @@ function importStudentsFromFile(){
 
      form:matchedForm,
 
+     startYear:startYear ? Number(startYear) : "",
+
      password:DEFAULT_STUDENT_PASSWORD,
 
      photo:DEFAULT_STUDENT_PHOTO,
@@ -13977,11 +13722,11 @@ function importStudentsFromFile(){
 
     <div class="lookup-result">
 
-     ✅ <strong>${created}</strong> student account(s) created.
+      <strong>${created}</strong> student account(s) created.
 
      <br>
 
-     ⚠️ <strong>${skipped}</strong> row(s) skipped.
+      <strong>${skipped}</strong> row(s) skipped.
 
      <br><br>
 
@@ -14011,7 +13756,7 @@ function importStudentsFromFile(){
 
     <div class="lookup-error">
 
-     ❌ ${escapeHTML(error.message)}
+      ${escapeHTML(error.message)}
 
     </div>
 
@@ -14084,6 +13829,11 @@ function importBooksFromFile(){
      ["barcode","booknumber","number","isbn"]
     );
 
+   const shelfNumberIndex = findColumn(headers,["shelfnumber","shelf","shelfno"]);
+   const shelfSectionIndex = findColumn(headers,["shelfsection","section","shelfcategory"]);
+   const shelfRowIndex = findColumn(headers,["shelfrow","row"]);
+   const shelfPositionIndex = findColumn(headers,["shelfposition","position","shelfpos"]);
+
    const quantityIndex =
     findColumn(
      headers,
@@ -14119,6 +13869,11 @@ function importBooksFromFile(){
 
     const barcode =
      String(row[barcodeIndex] || "").trim();
+
+    const shelfNumber = String(row[shelfNumberIndex] || "").trim();
+    const shelfSection = String(row[shelfSectionIndex] || category || "").trim();
+    const shelfRow = String(row[shelfRowIndex] || "").trim();
+    const shelfPosition = String(row[shelfPositionIndex] || "").trim();
 
     const quantity =
      Math.max(
@@ -14172,6 +13927,14 @@ function importBooksFromFile(){
 
      category,
 
+     shelfNumber,
+
+     shelfSection,
+
+     shelfRow,
+
+     shelfPosition,
+
      quantity,
 
      available:quantity,
@@ -14196,11 +13959,11 @@ function importBooksFromFile(){
 
     <div class="lookup-result">
 
-     ✅ <strong>${created}</strong> book record(s) imported.
+      <strong>${created}</strong> book record(s) imported.
 
      <br>
 
-     ⚠️ <strong>${skipped}</strong> row(s) skipped.
+      <strong>${skipped}</strong> row(s) skipped.
 
      ${errors.length
        ? `<br><br><strong>Details:</strong><br>${errors.map(escapeHTML).join("<br>")}`
@@ -14220,7 +13983,7 @@ function importBooksFromFile(){
 
     <div class="lookup-error">
 
-     ❌ ${escapeHTML(error.message)}
+      ${escapeHTML(error.message)}
 
     </div>
 
@@ -14274,7 +14037,7 @@ function downloadBookTemplate(){
 
  downloadTextFile(
   "mzugoss_books_template.csv",
-  "Title,Author,Category,Barcode,Quantity\nThings Fall Apart,Chinua Achebe,Literature,LIT003,5\n"
+  "Title,Author,Category,Barcode,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity\nThings Fall Apart,Chinua Achebe,Literature,LIT003,S-03,Literature,Row 2,Position 15,5\n"
  );
 
 }
@@ -14393,7 +14156,15 @@ function displayAdminClasses(){
 
    <p>
 
-    ${count} Registered Students
+    ${count} Active Students
+
+   </p>
+
+
+
+   <p style="color:#777">
+
+    Dropped students are kept separately.
 
    </p>
 
@@ -14623,9 +14394,31 @@ function renderAdminStudents(formName){
 
 
 
+   <p>
+
+     <strong>Year Started:</strong>
+
+     ${escapeHTML(st.startYear || "Not recorded")}
+
+    </p>
+
+
+
    </div>
 
 
+
+   <button
+
+    class="small-btn"
+
+    style="background:var(--orange)"
+
+    onclick="dropActiveStudent(${st.id})">
+
+     Drop
+
+   </button>
 
 
 
@@ -14637,7 +14430,7 @@ function renderAdminStudents(formName){
 
 
 
-    🗑️ Delete
+     Delete
 
 
 
@@ -14857,57 +14650,33 @@ DELETE SELECTED STUDENTS
 
 
 
-function deleteSelectedStudents(){
+function archiveStudentsToAlumni(selectedStudents, goneYear){
+
+ selectedStudents.forEach(student => {
+
+  if(!alumniStudents.some(a => a.libraryId === student.libraryId)){
+
+   alumniStudents.push({
+
+    ...student,
+
+    status:"Alumni",
+
+    goneYear:Number(goneYear),
+
+    archivedAt:new Date().toISOString()
+
+   });
+
+  }
+
+ });
+
+}
 
 
 
- const selected =
-
-  Array.from(
-
-   document.querySelectorAll(
-
-    "#adminStudentsInClass .student-select:checked"
-
-   )
-
-  )
-
-  .map(
-
-   checkbox =>
-
-    Number(
-
-     checkbox.dataset.studentId
-
-    )
-
-  );
-
-
-
-
-
- if(!selected.length){
-
-
-
-  alert(
-
-   "Please select at least one student."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
+function archiveAllForm4Students(){
 
 
 
@@ -14917,186 +14686,148 @@ function deleteSelectedStudents(){
 
    "adminSelectedClass"
 
-  ).textContent
-
-  .replace(" Students","");
+  ).textContent.replace(" Students","");
 
 
 
+ if(className !== "Form 4"){
+
+  alert("Open Form 4 first. Only Form 4 students can be archived as Alumni.");
+
+  return;
+
+ }
 
 
- if(
 
-  !confirm(
+ const form4Students =
 
-   `Delete ${selected.length} selected student(s) from ${className}?`
+  students.filter(s => s.form === "Form 4");
 
-  )
 
- )
+
+ if(!form4Students.length){
+
+  alert("There are no active Form 4 students to archive.");
+
+  return;
+
+ }
+
+
+
+ if(!confirm(
+
+  `Archive ALL ${form4Students.length} Form 4 student(s) under ALUMNI?`
+
+ ))
 
   return;
 
 
 
+ const goneYear = prompt(
 
+  "Enter the year these Form 4 students left / completed school:",
 
- students =
-
-  students.filter(
-
-   s =>
-
-    !selected.includes(s.id)
-
-  );
-
-
-
-
-
- saveData();
-
-
-
- updateStudentSuggestions();
-
-
-
- renderAdminStudents(className);
-
-
-
- updateAdminDashboard();
-
-
-
- showToast(
-
-  `🗑️ ${selected.length} student(s) deleted`,
-
-  "var(--red)"
+  String(new Date().getFullYear())
 
  );
 
 
 
+ if(!goneYear || !/^\\d{4}$/.test(goneYear))
+
+  return;
+
+
+
+ archiveStudentsToAlumni(form4Students,goneYear);
+
+
+
+ students = students.filter(s => s.form !== "Form 4");
+
+
+
+ saveData();
+
+ updateStudentSuggestions();
+
+ displayAdminClasses();
+
+ renderAdminStudents("Form 4");
+
+ updateAdminDashboard();
+
+ showAlumniYears();
+
+ showAlumniUnreturnedYears();
+
+
+
+ showToast(
+
+  ` ${form4Students.length} Form 4 student(s) moved to ALUMNI`,
+
+  "var(--purple)"
+
+ );
+
 }
 
 
 
-
-
-/* =========================================================
-
-DELETE INDIVIDUAL STUDENT
-
-========================================================= */
-
+function deleteSelectedStudents(){
+ const selected = Array.from(document.querySelectorAll("#adminStudentsInClass .student-select:checked")).map(checkbox => Number(checkbox.dataset.studentId));
+ if(!selected.length){ alert("Please select at least one student."); return; }
+ const className = document.getElementById("adminSelectedClass").textContent.replace(" Students","");
+ const selectedStudents = students.filter(s => selected.includes(s.id));
+ const isForm4 = className === "Form 4";
+ if(isForm4){
+  if(!confirm(`Archive ${selected.length} Form 4 student(s) under ALUMNI and remove them from active students?`)) return;
+  const goneYear = prompt("Enter the year these Form 4 students left / completed school:", String(new Date().getFullYear()));
+  if(!goneYear || !/^\d{4}$/.test(goneYear)) return;
+  archiveStudentsToAlumni(selectedStudents,goneYear);
+ }else{
+  if(!confirm(`Delete ${selected.length} selected student(s) from ${className}? They will be saved under Dropped Students.`)) return;
+  const goneYear = prompt("Enter the year these students dropped / left school:", String(new Date().getFullYear()));
+  if(!goneYear || !/^\d{4}$/.test(goneYear)) return;
+  selectedStudents.forEach(student => {
+   if(!droppedStudents.some(d => d.libraryId === student.libraryId)) droppedStudents.unshift({...student,status:"Dropped",goneYear:Number(goneYear),droppedAt:new Date().toISOString()});
+  });
+ }
+ students = students.filter(s => !selected.includes(s.id));
+ saveData(); updateStudentSuggestions(); renderAdminStudents(className); updateAdminDashboard(); displayDroppedStudents(); showAlumniYears(); showAlumniUnreturnedYears();
+ showToast(isForm4 ? `${selected.length} Form 4 student(s) moved to ALUMNI` : `${selected.length} student(s) moved to Dropped Students`, isForm4 ? "var(--purple)" : "var(--red)");
+}
 
 
 function deleteStudent(id){
-
-
-
- const student =
-
-  students.find(
-
-   s => s.id === id
-
-  );
-
-
-
-
-
- if(!student)
-
-  return;
-
-
-
-
-
- if(
-
-  !confirm(
-
-   `Delete ${student.name} from the student registry?`
-
-  )
-
- )
-
-  return;
-
-
-
-
-
- students =
-
-  students.filter(
-
-   s => s.id !== id
-
-  );
-
-
-
-
-
- saveData();
-
-
-
- updateStudentSuggestions();
-
-
-
- const form =
-
-  document.getElementById(
-
-   "adminSelectedClass"
-
-  ).textContent
-
-  .replace(" Students","");
-
-
-
-
-
- renderAdminStudents(form);
-
-
-
- updateAdminDashboard();
-
-
-
- showToast(
-
-  "🗑️ Student removed",
-
-  "var(--red)"
-
- );
-
-
-
+ const student = students.find(s => s.id === id);
+ if(!student) return;
+ const isForm4 = student.form === "Form 4";
+ if(isForm4){
+  if(!confirm(`Move ${student.name} to ALUMNI? Only Form 4 students can be archived as Alumni.`)) return;
+  const goneYear = prompt("Enter the year this Form 4 student left / completed school:", String(new Date().getFullYear()));
+  if(!goneYear || !/^\d{4}$/.test(goneYear)) return;
+  archiveStudentsToAlumni([student],goneYear);
+ }else{
+  if(!confirm(`Delete ${student.name} from ${student.form}? The student will be saved under Dropped Students.`)) return;
+  const goneYear = prompt(`Enter the year ${student.name} dropped / left school:`, String(new Date().getFullYear()));
+  if(!goneYear || !/^\d{4}$/.test(goneYear)) return;
+  if(!droppedStudents.some(d => d.libraryId === student.libraryId)) droppedStudents.unshift({...student,status:"Dropped",goneYear:Number(goneYear),droppedAt:new Date().toISOString()});
+ }
+ students = students.filter(s => s.id !== id);
+ saveData(); updateStudentSuggestions();
+ const form = document.getElementById("adminSelectedClass").textContent.replace(" Students","");
+ renderAdminStudents(form); updateAdminDashboard(); displayDroppedStudents(); showAlumniYears(); showAlumniUnreturnedYears();
+ showToast(isForm4 ? "Student moved to ALUMNI" : "Student moved to Dropped Students", isForm4 ? "var(--purple)" : "var(--red)");
 }
 
 
-
-
-
 /* =========================================================
-
 PROMOTE CLASSES
-
 =========================================================
 
 
@@ -15127,231 +14858,89 @@ function promoteClasses(){
 
  const form4Students =
 
-  students.filter(
-
-   s => s.form === "Form 4"
-
-  );
-
-
+  students.filter(s => s.form === "Form 4");
 
 
 
  if(form4Students.length > 0){
 
-
-
   alert(
 
-   "Form 4 still contains students. Delete the Form 4 students first before promoting the remaining classes."
+   "Form 4 still contains active students. Archive/delete the Form 4 students first before promoting the remaining classes."
 
   );
 
-
-
   return;
-
-
 
  }
 
 
 
+ const form3 = students.filter(s => s.form === "Form 3").length;
 
+ const form2 = students.filter(s => s.form === "Form 2").length;
 
- const form3 =
-
-  students.filter(
-
-   s => s.form === "Form 3"
-
-  ).length;
+ const form1 = students.filter(s => s.form === "Form 1").length;
 
 
 
+ if(!confirm(
 
+  `Promote ACTIVE students now?\\n\\nForm 3 → Form 4: ${form3}\\nForm 2 → Form 3: ${form2}\\nForm 1 → Form 2: ${form1}\\n\\nDropped students are not included.`
 
- const form2 =
-
-  students.filter(
-
-   s => s.form === "Form 2"
-
-  ).length;
-
-
-
-
-
- const form1 =
-
-  students.filter(
-
-   s => s.form === "Form 1"
-
-  ).length;
-
-
-
-
-
- if(
-
-  !confirm(
-
-   `Promote students now?\n\nForm 3 → Form 4: ${form3}\nForm 2 → Form 3: ${form2}\nForm 1 → Form 2: ${form1}\n\nForm 1 will be left empty for new registration.`
-
-  )
-
- )
+ ))
 
   return;
 
 
 
+ students = students.map(s => {
 
+  if(s.form === "Form 3")
 
- students =
+   return {...s,form:"Form 4"};
 
-  students.map(
 
-   s => {
 
+  if(s.form === "Form 2")
 
+   return {...s,form:"Form 3"};
 
-    if(s.form === "Form 3")
 
-     return {
 
-      ...s,
+  if(s.form === "Form 1")
 
-      form:"Form 4"
+   return {...s,form:"Form 2"};
 
-     };
 
 
+  return s;
 
+ });
 
 
-    if(s.form === "Form 2")
 
-     return {
+ borrowed = borrowed.map(record => {
 
-      ...s,
+  const student = students.find(s => s.libraryId === record.studentId);
 
-      form:"Form 3"
 
-     };
 
+  return student
 
+   ? {...record,studentForm:student.form}
 
+   : record;
 
-
-    if(s.form === "Form 1")
-
-     return {
-
-      ...s,
-
-      form:"Form 2"
-
-     };
-
-
-
-
-
-    return s;
-
-
-
-   }
-
-  );
-
-
-
-
-
- /*
-
-  Also update active borrowing records for students
-
-  whose forms have changed.
-
- */
-
-
-
- borrowed =
-
-  borrowed.map(
-
-   record => {
-
-
-
-    const student =
-
-     students.find(
-
-      s =>
-
-       s.libraryId ===
-
-       record.studentId
-
-     );
-
-
-
-
-
-    if(student){
-
-
-
-     return {
-
-      ...record,
-
-      studentForm:
-
-       student.form
-
-     };
-
-
-
-    }
-
-
-
-
-
-    return record;
-
-
-
-   }
-
-  );
-
-
+ });
 
 
 
  saveData();
 
-
-
  updateStudentSuggestions();
 
-
-
  displayAdminClasses();
-
-
 
  updateAdminDashboard();
 
@@ -15359,19 +14948,224 @@ function promoteClasses(){
 
  showToast(
 
-  "🎓 Students promoted. Form 1 is now empty for new registrations.",
+  " Active students promoted. Dropped students were not promoted.",
 
   "var(--purple)"
 
  );
 
-
-
 }
 
 
 
+/* =========================================================
+DROPPED STUDENTS
+========================================================= */
 
+function dropActiveStudent(id){
+
+ const student = students.find(s => s.id === id);
+
+ if(!student) return;
+
+ const goneYear = prompt(
+  `Enter the year ${student.name} dropped / left school:`,
+  String(new Date().getFullYear())
+ );
+
+ if(!goneYear || !/^\\d{4}$/.test(goneYear))
+  return;
+
+ if(!confirm(`Move ${student.name} to Dropped Students?`))
+  return;
+
+ droppedStudents.unshift({
+  ...student,
+  status:"Dropped",
+  goneYear:Number(goneYear),
+  droppedAt:new Date().toISOString()
+ });
+
+ students = students.filter(s => s.id !== id);
+
+ saveData();
+ updateStudentSuggestions();
+ displayAdminClasses();
+ renderAdminStudents(student.form);
+ displayDroppedStudents();
+ updateAdminDashboard();
+
+ showToast(" Student moved to Dropped Students","var(--red)");
+}
+
+
+
+function displayDroppedStudents(){
+
+ const container = document.getElementById("droppedStudentList");
+
+ if(!container) return;
+
+ const search = (document.getElementById("droppedSearch")?.value || "").toLowerCase().trim();
+
+ const list = droppedStudents.filter(student =>
+  `${student.name} ${student.libraryId} ${student.form} ${student.reason}`
+   .toLowerCase().includes(search)
+ );
+
+ if(!list.length){
+  container.innerHTML = "<p>No dropped students found.</p>";
+  return;
+ }
+
+ container.innerHTML = `
+  <div class="table-container"><table>
+   <thead><tr>
+    <th>Name</th><th>Library ID</th><th>Last Form</th>
+    <th>Year Started</th><th>Year Gone</th><th>Reason</th>
+   </tr></thead>
+   <tbody>
+    ${list.map(student => `
+     <tr>
+      <td>${escapeHTML(student.name)}</td>
+      <td>${escapeHTML(student.libraryId)}</td>
+      <td>${escapeHTML(student.form)}</td>
+      <td>${escapeHTML(student.startYear || "Not recorded")}</td>
+      <td>${escapeHTML(student.goneYear || "Not recorded")}</td>
+      <td>${escapeHTML(student.reason || "Not recorded")}</td>
+     </tr>
+    `).join("")}
+   </tbody>
+  </table></div>`;
+}
+
+
+
+/* =========================================================
+ALUMNI
+========================================================= */
+
+let selectedAlumniYear = null;
+let selectedAlumniBookTab = "notReturned";
+
+function alumniRange(student){
+ const start = student.startYear || "Unknown";
+ const gone = student.goneYear || "Unknown";
+ return `${start}-${gone}`;
+}
+
+function showAlumniYears(){
+ const dashboard = document.getElementById("alumniYearDashboard");
+ const view = document.getElementById("alumniStudentView");
+ if(!dashboard) return;
+
+ dashboard.style.display = "grid";
+ if(view) view.style.display = "none";
+
+ const groups = {};
+ alumniStudents.forEach(student => {
+  const key = alumniRange(student);
+  groups[key] = (groups[key] || 0) + 1;
+ });
+
+ dashboard.innerHTML = "";
+ const years = Object.keys(groups).sort((a,b) => b.localeCompare(a));
+ if(!years.length){
+  dashboard.innerHTML = "<p>No alumni records yet. Form 4 students will appear here when archived.</p>";
+  return;
+ }
+
+ years.forEach(range => {
+  const card = document.createElement("div");
+  card.className = "admin-class-card";
+  card.onclick = () => openAlumniYear(range);
+  card.innerHTML = `
+   <h2>${escapeHTML(range)}</h2>
+   <p>${groups[range]} Alumni Students</p>
+   <small>Year Started - Year Gone</small>`;
+  dashboard.appendChild(card);
+ });
+}
+
+function openAlumniYear(range){
+ selectedAlumniYear = String(range);
+ document.getElementById("alumniYearDashboard").style.display = "none";
+ document.getElementById("alumniStudentView").style.display = "block";
+ document.getElementById("selectedAlumniYear").textContent = `Alumni ${range}`;
+ document.getElementById("alumniNotReturnedSearch").value = "";
+ document.getElementById("alumniReturnedSearch").value = "";
+ showAlumniBookTab("notReturned");
+}
+
+function showAlumniBookTab(tab){
+ selectedAlumniBookTab = tab;
+ const notReturnedPanel = document.getElementById("alumniNotReturnedPanel");
+ const returnedPanel = document.getElementById("alumniReturnedPanel");
+ const notReturnedTab = document.getElementById("alumniNotReturnedTab");
+ const returnedTab = document.getElementById("alumniReturnedTab");
+ if(!notReturnedPanel || !returnedPanel) return;
+
+ const isReturned = tab === "returned";
+ notReturnedPanel.style.display = isReturned ? "none" : "block";
+ returnedPanel.style.display = isReturned ? "block" : "none";
+ notReturnedTab.classList.toggle("active", !isReturned);
+ returnedTab.classList.toggle("active", isReturned);
+ displayAlumniBookRecords(tab);
+}
+
+function getAlumniStudentsForSelectedRange(){
+ return alumniStudents.filter(student => alumniRange(student) === String(selectedAlumniYear));
+}
+
+function displayAlumniBookRecords(tab){
+ const isReturned = tab === "returned";
+ const container = document.getElementById(isReturned ? "alumniReturnedList" : "alumniNotReturnedList");
+ const search = (document.getElementById(isReturned ? "alumniReturnedSearch" : "alumniNotReturnedSearch")?.value || "").toLowerCase().trim();
+ if(!container) return;
+
+ const alumniIds = new Set(getAlumniStudentsForSelectedRange().map(student => student.libraryId));
+ const records = isReturned ? returnedArchive : borrowed;
+ const list = records.filter(record => {
+  const belongs = alumniIds.has(record.studentId);
+  const correctStatus = isReturned ? !!record.returned : !record.returned;
+  const text = `${record.studentName || ""} ${record.studentId || ""} ${record.bookTitle || ""} ${record.bookNumber || record.bookBarcode || ""} ${record.bookAuthor || ""}`.toLowerCase();
+  return belongs && correctStatus && text.includes(search);
+ });
+
+ if(!list.length){
+  container.innerHTML = isReturned
+   ? "<p>No returned-book records found for this alumni category.</p>"
+   : "<p>No unreturned-book records found for this alumni category.</p>";
+  return;
+ }
+
+ container.innerHTML = `
+  <div class="table-container"><table>
+   <thead><tr>
+    <th>Student Name</th><th>Library ID</th><th>Year Started</th><th>Year Gone</th>
+    <th>Book Number</th><th>Book Title</th><th>Author</th><th>Borrow Date</th>
+    <th>${isReturned ? "Return Date" : "Due Date"}</th>
+   </tr></thead>
+   <tbody>
+    ${list.map(record => {
+      const student = alumniStudents.find(s => s.libraryId === record.studentId) || {};
+      const finalDate = isReturned ? (record.returnDate || "") : (record.dueDate || "");
+      const overdue = !isReturned && record.dueDate && record.dueDate < new Date().toISOString().split("T")[0];
+      return `<tr class="${overdue ? "overdue-row" : ""}">
+       <td>${escapeHTML(record.studentName || student.name || "")}</td>
+       <td>${escapeHTML(record.studentId || student.libraryId || "")}</td>
+       <td>${escapeHTML(student.startYear || "Not recorded")}</td>
+       <td>${escapeHTML(student.goneYear || "Not recorded")}</td>
+       <td>${escapeHTML(record.bookNumber || record.bookBarcode || "")}</td>
+       <td>${escapeHTML(record.bookTitle || "")}</td>
+       <td>${escapeHTML(record.bookAuthor || "")}</td>
+       <td>${escapeHTML(record.borrowDate || "")}</td>
+       <td>${escapeHTML(finalDate)}</td>
+      </tr>`;
+    }).join("")}
+   </tbody>
+  </table></div>`;
+}
 
 /* =========================================================
 
@@ -15543,7 +15337,7 @@ function displaySubjectStatistics(){
 
    <h3>
 
-    📚 ${escapeHTML(cat)}
+     ${escapeHTML(cat)}
 
    </h3>
 
@@ -15681,7 +15475,7 @@ async function openBarcodeScanner(purpose){
 
   status.innerHTML =
 
-   "⚠️ Camera barcode detection is not supported by this browser. Use a USB/Bluetooth barcode scanner in the barcode field instead.";
+   " Camera barcode detection is not supported by this browser. Use a USB/Bluetooth barcode scanner in the barcode field instead.";
 
 
 
@@ -15811,7 +15605,7 @@ async function openBarcodeScanner(purpose){
 
   status.textContent =
 
-   "📷 Point the camera at the barcode...";
+   " Point the camera at the barcode...";
 
 
 
@@ -15947,7 +15741,7 @@ async function openBarcodeScanner(purpose){
 
 
 
-   ❌ Camera could not be opened.
+    Camera could not be opened.
 
 
 
@@ -16235,7 +16029,7 @@ document.addEventListener("keydown", function(event){
  if(blocked){
   event.preventDefault();
   event.stopPropagation();
-  showToast("🔒 This action is disabled.", "var(--red)");
+  showToast(" This action is disabled.", "var(--red)");
   return false;
  }
 });
