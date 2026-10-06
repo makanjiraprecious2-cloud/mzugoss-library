@@ -242,15 +242,35 @@ LOGIN
 
 @keyframes slides{
 
- 0%,30%{transform:translateX(0)}
+ 0%,25%{transform:translateX(0)}
 
- 33%,63%{transform:translateX(-33.333%)}
+ 33.333%,58.333%{transform:translateX(-33.333%)}
 
- 66%,96%{transform:translateX(-66.666%)}
+ 66.666%,91.666%{transform:translateX(-66.666%)}
 
  100%{transform:translateX(0)}
 
 }
+
+.background-track img{
+ opacity:.92;
+ transform:scale(1.02);
+ animation:photoZoom 15s ease-in-out infinite;
+}
+
+@keyframes photoZoom{
+ 0%,25%{transform:scale(1.02)}
+ 33.333%,58.333%{transform:scale(1.08)}
+ 66.666%,91.666%{transform:scale(1.04)}
+ 100%{transform:scale(1.02)}
+}
+
+.shelf-auto-note{background:linear-gradient(135deg,#eef8ff,#f4fff7);border-left:5px solid var(--lightblue);padding:12px 14px;border-radius:10px;margin:10px 0 15px;font-size:14px;line-height:1.5}
+.duplicate-warning{background:#fff4e5;border:1px solid #f39c12;color:#8a4b00;padding:11px 14px;border-radius:9px;margin:8px 0;font-weight:bold}
+.duplicate-ok{background:#eafaf1;border:1px solid #27ae60;color:#176b3a;padding:11px 14px;border-radius:9px;margin:8px 0;font-weight:bold}
+.ocr-result{background:#f7f9fb;border:1px solid #d8e1ea;padding:12px;border-radius:10px;margin-top:10px}
+.ocr-result input{margin-top:8px}
+
 
 
 
@@ -2369,6 +2389,333 @@ MOBILE
 
 }
 
+
+
+/* =========================================================
+   MZUGOSS PREMIUM UI SYSTEM
+   ========================================================= */
+:root{
+  --ink:#0b1630;
+  --ink-soft:#53627a;
+  --surface:#ffffff;
+  --surface-2:#f5f8fc;
+  --line:rgba(20,43,82,.10);
+  --primary:#3157d5;
+  --primary-2:#6d5dfc;
+  --cyan:#18b7d8;
+  --violet:#8a63ff;
+  --success:#16a477;
+  --warning:#e7a72f;
+  --danger:#e45b68;
+  --shadow:0 20px 60px rgba(19,35,73,.12);
+  --shadow-soft:0 10px 30px rgba(19,35,73,.08);
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:linear-gradient(135deg,#f7faff 0%,#eef3fb 45%,#f8f7ff 100%);
+  color:var(--ink);
+}
+button,input,select,textarea{font:inherit}
+button{transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease,color .22s ease;}
+button:hover{transform:translateY(-2px)}
+button:active{transform:translateY(0) scale(.98)}
+
+/* Welcome */
+#loginScreen{background:#07132c !important;overflow:hidden}
+.login-background:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 20%,rgba(49,87,213,.28),transparent 45%),linear-gradient(180deg,rgba(5,14,35,.28),rgba(5,14,35,.82));z-index:1}
+.background-track img{filter:saturate(.9) contrast(1.04);transform:scale(1.06)}
+.welcome-text{z-index:3;max-width:980px;padding:48px 30px;animation:welcomeIn .9s cubic-bezier(.2,.8,.2,1) both}
+.welcome-text h1{font-size:clamp(34px,5vw,66px);letter-spacing:-.045em;text-shadow:0 12px 35px rgba(0,0,0,.35)}
+.welcome-text p{font-size:18px;color:rgba(255,255,255,.82);letter-spacing:.16em;text-transform:uppercase}
+.welcome-cta{margin-top:25px!important;padding:15px 28px!important;border:1px solid rgba(255,255,255,.25)!important;border-radius:999px!important;background:linear-gradient(135deg,#5578ff,#7b62ff)!important;color:#fff!important;font-size:16px!important;font-weight:800!important;box-shadow:0 15px 45px rgba(77,93,255,.35)!important}
+.welcome-cta span{margin-left:10px;font-size:20px}
+.welcome-cta:hover{box-shadow:0 20px 55px rgba(77,93,255,.48)!important;transform:translateY(-3px)!important}
+@keyframes welcomeIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+
+/* Dashboard selector */
+#dashboardSelector{padding:56px 5vw 48px!important;background:radial-gradient(circle at 15% 10%,rgba(24,183,216,.10),transparent 30%),radial-gradient(circle at 85% 20%,rgba(138,99,255,.10),transparent 32%),linear-gradient(135deg,#f8fbff,#f4f3ff)!important;min-height:100vh}
+.dashboard-header img{width:76px!important;height:76px!important;object-fit:contain;filter:drop-shadow(0 12px 20px rgba(49,87,213,.16));animation:floatLogo 4s ease-in-out infinite}
+.dashboard-header h1{font-size:clamp(34px,4vw,56px)!important;letter-spacing:-.04em;color:var(--ink)!important}
+.dashboard-header p{color:var(--ink-soft)!important;font-size:16px}
+.dashboard-grid{max-width:1180px!important;gap:22px!important}
+.dashboard-card{position:relative!important;overflow:hidden;background:rgba(255,255,255,.82)!important;border:1px solid rgba(49,87,213,.10)!important;border-radius:26px!important;box-shadow:var(--shadow-soft)!important;padding:32px!important;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease!important}
+.dashboard-card:before{content:"";position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(49,87,213,.10),transparent 45%,rgba(138,99,255,.08));opacity:0;transition:opacity .35s ease;pointer-events:none}
+.dashboard-card:hover{transform:translateY(-9px)!important;box-shadow:0 28px 70px rgba(20,43,82,.16)!important;border-color:rgba(49,87,213,.22)!important}
+.dashboard-card:hover:before{opacity:1}
+.role-heading{position:relative;z-index:1;justify-content:flex-start!important;gap:14px!important;margin-bottom:16px!important}
+.role-heading h2{font-size:23px!important;letter-spacing:-.02em}
+.role-icon{width:54px;height:54px;border-radius:17px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(135deg,rgba(49,87,213,.12),rgba(138,99,255,.13));color:var(--primary);box-shadow:inset 0 0 0 1px rgba(49,87,213,.08)}
+.role-icon svg{width:29px;height:29px}
+.role-icon-student{color:#1597b8;background:linear-gradient(135deg,rgba(24,183,216,.13),rgba(49,87,213,.10))}
+.role-icon-admin{color:#7654e8;background:linear-gradient(135deg,rgba(138,99,255,.15),rgba(49,87,213,.10))}
+.dashboard-card p{color:var(--ink-soft)!important;line-height:1.7!important;min-height:74px}
+.dashboard-card button,.dashboard-logout{border:0!important;border-radius:13px!important;font-weight:800!important;box-shadow:0 10px 25px rgba(20,43,82,.10)!important}
+.dashboard-card button{width:100%;padding:13px 16px!important}
+.librarian-btn{background:linear-gradient(135deg,#3157d5,#4f72ed)!important}
+.student-btn{background:linear-gradient(135deg,#119fbe,#18b7d8)!important}
+.admin-btn{background:linear-gradient(135deg,#7053e9,#9274ff)!important}
+.dashboard-logout{background:#fff!important;color:#65728a!important;border:1px solid var(--line)!important;padding:11px 22px!important}
+@keyframes floatLogo{50%{transform:translateY(-5px)}}
+
+/* Main navigation */
+nav{position:sticky!important;top:14px;z-index:1000!important;width:calc(100% - 28px)!important;margin:14px auto!important;border:1px solid rgba(255,255,255,.65)!important;border-radius:20px!important;background:rgba(8,21,48,.84)!important;backdrop-filter:blur(18px)!important;box-shadow:0 18px 45px rgba(5,18,45,.18)!important;padding:12px 18px!important}
+nav .brand{gap:12px!important}
+nav .logo{width:44px!important;height:44px!important;border-radius:12px!important;object-fit:contain;background:rgba(255,255,255,.08);padding:4px}
+nav .logo-text{font-weight:900!important;letter-spacing:.08em!important;color:#fff!important}
+nav .logo-subtitle{color:rgba(255,255,255,.58)!important;font-size:11px!important;text-transform:uppercase;letter-spacing:.12em}
+nav>div:last-child{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+nav button{border:1px solid transparent!important;border-radius:10px!important;background:transparent!important;color:rgba(255,255,255,.78)!important;padding:9px 12px!important;font-weight:700!important}
+nav button:hover{background:rgba(255,255,255,.10)!important;color:#fff!important;border-color:rgba(255,255,255,.10)!important}
+
+/* Librarian content */
+.page{animation:pageIn .45s cubic-bezier(.2,.8,.2,1) both}
+.hero{border-radius:28px!important;background:linear-gradient(135deg,#122c61,#3157d5 52%,#6d5dfc)!important;box-shadow:0 25px 70px rgba(49,87,213,.25)!important;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;right:-120px;top:-160px;background:rgba(255,255,255,.12);filter:blur(2px)}
+.stats{gap:16px!important}
+.stat{border:1px solid var(--line)!important;border-radius:18px!important;background:rgba(255,255,255,.86)!important;box-shadow:var(--shadow-soft)!important;transition:transform .25s ease,box-shadow .25s ease!important}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow)!important}
+.search-box{background:rgba(255,255,255,.78)!important;border:1px solid var(--line)!important;border-radius:16px!important;box-shadow:var(--shadow-soft)!important}
+.search-box input,.admin-form input,.admin-form select,.admin-form textarea{border:1px solid #dce3ef!important;border-radius:12px!important;background:#fbfcff!important;color:var(--ink)!important;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease!important}
+.search-box input:focus,.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{outline:none!important;border-color:rgba(49,87,213,.55)!important;box-shadow:0 0 0 4px rgba(49,87,213,.09)!important;transform:translateY(-1px)}
+.books{gap:16px!important}
+.book-card{border:1px solid var(--line)!important;border-radius:18px!important;background:rgba(255,255,255,.9)!important;box-shadow:var(--shadow-soft)!important;transition:transform .28s ease,box-shadow .28s ease!important}
+.book-card:hover{transform:translateY(-5px)!important;box-shadow:var(--shadow)!important}
+
+/* Admin */
+#adminPanel{background:linear-gradient(135deg,#f6f9ff,#f6f4ff)!important;min-height:100vh!important}
+.admin-header{background:linear-gradient(135deg,#091b3f,#1e3f8e 55%,#6048c9)!important;box-shadow:0 22px 55px rgba(15,35,80,.18)!important;padding:42px 5vw!important}
+.admin-header h1{font-size:clamp(30px,4vw,50px)!important;letter-spacing:-.04em!important}
+.admin-header p{color:rgba(255,255,255,.68)!important}
+.admin-content{max-width:1320px!important;margin:28px auto 60px!important}
+.admin-menu{display:flex!important;flex-wrap:wrap!important;gap:9px!important;padding:8px!important;border:1px solid var(--line)!important;background:rgba(255,255,255,.72)!important;border-radius:18px!important;box-shadow:var(--shadow-soft)!important;position:sticky;top:84px;z-index:50;backdrop-filter:blur(14px)}
+.admin-menu button{position:relative!important;padding:11px 15px!important;background:transparent!important;color:#56647d!important;border:1px solid transparent!important;border-radius:11px!important;font-weight:800!important;box-shadow:none!important}
+.admin-menu button:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;background:linear-gradient(135deg,var(--primary),var(--violet));vertical-align:middle;box-shadow:0 0 0 4px rgba(49,87,213,.07)}
+.admin-menu button:hover{background:#fff!important;color:var(--primary)!important;transform:translateY(-1px)!important}
+.admin-menu button[style*="lightblue"]{background:linear-gradient(135deg,#3157d5,#5577ef)!important;color:#fff!important}
+.admin-section{animation:sectionIn .42s cubic-bezier(.2,.8,.2,1) both}
+.admin-section>h2,.admin-form h2{letter-spacing:-.03em!important}
+.admin-form,.form{background:rgba(255,255,255,.88)!important;border:1px solid var(--line)!important;border-radius:22px!important;box-shadow:var(--shadow)!important;padding:28px!important}
+.admin-stat-grid{gap:16px!important}
+.admin-stat{border:1px solid var(--line)!important;border-radius:18px!important;background:rgba(255,255,255,.86)!important;box-shadow:var(--shadow-soft)!important;transition:transform .25s ease,box-shadow .25s ease!important}
+.admin-stat:hover{transform:translateY(-4px);box-shadow:var(--shadow)!important}
+.admin-stat h2{font-size:32px!important;color:var(--primary)!important}
+
+/* Tables, cards, lists and modal surfaces */
+table{border-collapse:separate!important;border-spacing:0!important;overflow:hidden;border:1px solid var(--line)!important;border-radius:16px!important;background:#fff!important;box-shadow:var(--shadow-soft)!important}
+th{background:#f1f5fb!important;color:#33425d!important}
+td,th{border-bottom:1px solid #edf1f6!important}
+.modal>div{border:1px solid rgba(255,255,255,.7)!important;box-shadow:0 30px 100px rgba(0,0,0,.32)!important}
+
+@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes sectionIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:800px){
+ nav{position:relative!important;top:0!important}
+ nav>div:last-child{justify-content:flex-start}
+ .admin-menu{position:relative;top:0}
+ .dashboard-grid{grid-template-columns:1fr!important}
+ .welcome-text{padding:32px 20px}
+}
+
+/* =========================================================
+   FINAL NAVIGATION + SCROLL FIX
+   - Uses the same premium dashboard colour system
+   - SVG icons only (no emoji icons)
+   - Sticky bars stay above content without covering it
+   ========================================================= */
+
+html{
+  scroll-padding-top:110px;
+}
+
+body{
+  overflow-x:hidden;
+}
+
+/* Librarian navigation */
+#librarianSystem > nav{
+  position:sticky !important;
+  top:0 !important;
+  z-index:3000 !important;
+  width:100% !important;
+  margin:0 !important;
+  border-radius:0 0 20px 20px !important;
+  padding:12px clamp(14px,3vw,32px) !important;
+  background:rgba(8,21,48,.97) !important;
+  border:0 !important;
+  border-bottom:1px solid rgba(255,255,255,.14) !important;
+  box-shadow:0 12px 32px rgba(5,18,45,.20) !important;
+  isolation:isolate;
+}
+
+#librarianSystem > nav > div:last-child{
+  display:flex !important;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+#librarianSystem > nav button{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  white-space:nowrap;
+}
+
+.nav-svg,
+.admin-tab-svg{
+  width:19px;
+  height:19px;
+  flex:0 0 19px;
+  display:block;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.nav-button-label{
+  display:inline-block;
+}
+
+/* The page itself remains below the sticky librarian bar. */
+#librarianSystem .page{
+  position:relative;
+  z-index:1;
+  scroll-margin-top:95px;
+  padding-top:6px;
+}
+
+/* Administrator area */
+#adminPanel{
+  position:relative;
+  overflow:visible !important;
+}
+
+#adminPanel .admin-header{
+  position:relative;
+  z-index:1;
+}
+
+#adminPanel .admin-content{
+  position:relative;
+  overflow:visible !important;
+}
+
+/* Keep admin tabs at the actual top of the viewport.
+   The bar is solid enough that text underneath cannot visually show through. */
+#adminPanel .admin-menu{
+  position:sticky !important;
+  top:0 !important;
+  z-index:2500 !important;
+  isolation:isolate;
+  background:rgba(255,255,255,.985) !important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(20,43,82,.12) !important;
+  box-shadow:0 12px 32px rgba(19,35,73,.12) !important;
+  margin-bottom:28px !important;
+}
+
+/* Put a clean separation between tabs and whatever is being scrolled. */
+#adminPanel .admin-menu::after{
+  content:"";
+  position:absolute;
+  left:-1px;
+  right:-1px;
+  bottom:-10px;
+  height:10px;
+  background:linear-gradient(
+    to bottom,
+    rgba(246,249,255,.96),
+    rgba(246,249,255,0)
+  );
+  pointer-events:none;
+  z-index:-1;
+}
+
+#adminPanel .admin-section{
+  position:relative;
+  z-index:1;
+  scroll-margin-top:105px;
+  background:transparent;
+}
+
+/* SVG admin tabs */
+#adminPanel .admin-tab,
+#adminPanel .admin-menu > button:not(.admin-tab){
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  min-height:44px;
+}
+
+#adminPanel .admin-tab-svg{
+  width:18px;
+  height:18px;
+}
+
+#adminPanel .admin-tab.active,
+#adminPanel .admin-tab[aria-current="page"]{
+  color:#fff !important;
+  background:linear-gradient(135deg,#3157d5,#5577ef) !important;
+  border-color:transparent !important;
+  box-shadow:0 8px 20px rgba(49,87,213,.22) !important;
+}
+
+#adminPanel .admin-tab.active::before,
+#adminPanel .admin-tab[aria-current="page"]::before{
+  display:none !important;
+}
+
+/* Keep the content clearly below the tab bar when the viewport is small. */
+@media (max-width:800px){
+  #librarianSystem > nav{
+    position:sticky !important;
+    top:0 !important;
+  }
+
+  #librarianSystem > nav > div:last-child{
+    width:100%;
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:2px;
+    scrollbar-width:thin;
+  }
+
+  #librarianSystem > nav button{
+    flex:0 0 auto;
+  }
+
+  #adminPanel .admin-menu{
+    top:0 !important;
+    overflow-x:auto;
+    flex-wrap:nowrap !important;
+    scrollbar-width:thin;
+  }
+
+  #adminPanel .admin-menu > button{
+    flex:0 0 auto;
+  }
+}
+
+@media (max-width:600px){
+  #librarianSystem .page{
+    scroll-margin-top:145px;
+  }
+
+  #adminPanel .admin-section{
+    scroll-margin-top:120px;
+  }
+}
+
 </style>
 
 </head>
@@ -2390,15 +2737,33 @@ SYSTEM LOGIN
 <div id="loginScreen">
  <div class="login-background">
   <div class="background-track">
-   <img src="1.jfif" alt="School library">
-   <img src="2.jfif" alt="Library shelves">
-   <img src="hie mzugos.jpg" alt="Books">
+   <img src="hie mzugos.jpg" alt="School library">
+   <img src="1.jfif" alt="Library shelves">
+   <img src="images (1).jfif" alt="Library shelves">
+   <img src="mzugoss..mn.jfif" alt="Library shelves">
+   <img src="
+   2.jfif" alt="Books">
   </div>
  </div>
  <div class="welcome-text">
   <h1>WELCOME TO MZUZU GOVERNMENT SECONDARY SCHOOL LIBRARY</h1>
   <p>MZUGOSS School Library Management System</p>
-  <button onclick="continueToDashboards()" style="margin-top:25px;padding:15px 45px;border:0;border-radius:8px;background:#27ae60;color:#fff;font-size:18px;font-weight:bold;cursor:pointer">Continue</button>
+  <button class="welcome-cta" onclick="continueToDashboards()">Continue <span aria-hidden="true">→</span></button>
+ </div>
+</div>
+
+<!-- BOOK NUMBER OCR CAPTURE MODAL -->
+<div id="bookNumberCaptureModal" class="modal" style="display:none;align-items:center;justify-content:center;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1000000;padding:20px">
+ <div style="background:#fff;border-radius:18px;padding:22px;max-width:720px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.45)">
+  <h2>Capture Book Number from First Page</h2>
+  <p>Open the first page of the MZUGOSS library book, place the printed book number clearly inside the camera view, then capture it.</p>
+  <video id="bookNumberVideo" autoplay playsinline style="width:100%;max-height:420px;background:#111;border-radius:12px;object-fit:cover"></video>
+  <canvas id="bookNumberCanvas" style="display:none"></canvas>
+  <div id="bookNumberOcrStatus" class="scanner-help" style="margin:12px 0">Camera is ready when opened.</div>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+   <button type="button" class="approve-btn" onclick="captureBookNumberImage()">Capture & Read Number</button>
+   <button type="button" class="reject-btn" onclick="closeBookNumberCapture()">Cancel</button>
+  </div>
  </div>
 </div>
 
@@ -2451,7 +2816,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Librarian"><h2>Librarian</h2></div>
+   <div class="role-heading"><span class="role-icon role-icon-librarian" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M8 11.5A4.5 4.5 0 0 1 12.5 7H39v30H12.5A4.5 4.5 0 0 0 8 41.5v-30Z" stroke="currentColor" stroke-width="2.5"/><path d="M8 11.5V41m6-29h18M18 18h14M18 24h14M18 30h9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><h2>Librarian</h2></div>
 
 
 
@@ -2484,7 +2849,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Student"><h2>Student</h2></div>
+   <div class="role-heading"><span class="role-icon role-icon-student" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="7" stroke="currentColor" stroke-width="2.5"/><path d="M11 40c1.7-7.2 6.2-11 13-11s11.3 3.8 13 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M8 25h8M32 25h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><h2>Student</h2></div>
 
 
 
@@ -2517,7 +2882,7 @@ DASHBOARD SELECTOR
 
 
   <div class="dashboard-card">
-   <div class="role-heading"><img class="role-picture" src="MZUGOSS LOGO.png" alt="Administrator"><h2>Administrator</h2></div>
+   <div class="role-heading"><span class="role-icon role-icon-admin" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 5 39 11v11c0 9.5-6.1 16.6-15 21-8.9-4.4-15-11.5-15-21V11l15-6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="m17 24 5 5 10-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h2>Administrator</h2></div>
 
 
 
@@ -2557,7 +2922,7 @@ DASHBOARD SELECTOR
 
   onclick="logout()">
 
-  Logout
+  Back
 
  </button>
 
@@ -2613,56 +2978,29 @@ LIBRARIAN SYSTEM
 
 
 
-  <button onclick="showPage('home')"> Home</button>
+  <button onclick="showPage('home')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/></svg><span class="nav-button-label">Home</span></button>
 
 
 
-  <button onclick="showPage('books')"> Books</button>
+  <button onclick="showPage('books')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 5.5V22"/><path d="M8 7h8M8 11h8M8 15h6"/></svg><span class="nav-button-label">Books</span></button>
 
 
 
-  <button onclick="showPage('borrowed')"> Borrowed</button>
-
-
-
-
-
-  <button onclick="showPage('messages')">
-
-    Messages
-
-   <span id="messageBadge"></span>
-
-  </button>
-
-
-
-  <button onclick="showPage('addBook')">
-
-    Add Book
-
-  </button>
+  <button onclick="showPage('borrowed')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h13l-2 10H8L6 4H3"/><circle cx="10" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M10 10h7"/></svg><span class="nav-button-label">Borrowed</span></button>
 
 
 
 
 
+  <button onclick="showPage('messages')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5.5 4v-4.5A2.5 2.5 0 0 1 4 13.5v-8Z"/><path d="M8 8h8M8 12h5"/></svg><span class="nav-button-label">Messages</span><span id="messageBadge"></span></button>
   <button
    id="adminReturnButton"
    style="display:none"
-   onclick="openAdminFromLibrarian()">
-
-   ‍ Admin Panel
-
-  </button>
+   onclick="openAdminFromLibrarian()"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.7-2.9 8.1-7 10-4.1-1.9-7-5.3-7-10V6l7-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg><span class="nav-button-label">Admin Panel</span></button>
 
 
 
-  <button onclick="backToDashboards()">
-
-    Dashboards
-
-  </button>
+  <button onclick="backToDashboards()"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-button-label">Dashboards</span></button>
 
 
 
@@ -3360,214 +3698,6 @@ MESSAGES
 
 <!-- =========================================================
 
-ADD BOOK
-
-========================================================= -->
-
-
-
-<section id="addBook" class="page">
-
-
-
- <div class="form">
-
-
-
-  <h1> Add New Book</h1>
-
-
-
-  <label>Book Barcode / Number *</label>
-
-
-
-  <div class="input-group">
-
-
-
-   <input
-
-    id="bookBarcode"
-
-    placeholder="Scan barcode here"
-
-    autocomplete="off"
-
-    onkeydown="barcodeEnter(event,'add')"
-
-    oninput="lookupBookByBarcode('add')">
-
-
-
-   <button
-
-    type="button"
-
-    class="scan-btn"
-
-    onclick="openBarcodeScanner('add')">
-
-     Scan
-
-   </button>
-
-
-
-  </div>
-
-
-
-  <div class="scanner-help">
-
-
-
-   <strong>Barcode scanner:</strong>
-
-
-
-   Connect a USB/Bluetooth barcode scanner,
-
-   click the barcode field and scan the book.
-
-   Most scanners act like a keyboard and automatically
-
-   type the barcode followed by Enter.
-
-
-
-   <br><br>
-
-
-
-   If the barcode is already registered in this system,
-
-   the title, author and subject will be retrieved automatically.
-
-
-
-  </div>
-
-
-
-
-
-  <div id="addBookLookupResult"></div>
-
-
-
-
-
-  <label>Book Title *</label>
-
-
-
-  <input
-
-   id="bookTitle"
-
-   placeholder="Enter book title">
-
-
-
-
-
-  <label>Author *</label>
-
-
-
-  <input
-
-   id="bookAuthor"
-
-   placeholder="Enter author">
-
-
-
-
-
-  <label>Category / Subject</label>
-
-
-
-  <select id="bookCategory">
-
-
-
-   <option>Literature</option>
-
-   <option>Science</option>
-
-   <option>Mathematics</option>
-
-   <option>History</option>
-
-   <option>Geography</option>
-
-   <option>Computer Science</option>
-
-   <option>EXCEL AND SUCCEED</option>
-
-   <option>TARGET</option>
-
-   <option>ARISE WITH</option>
-
-   <option>CHANCO</option>
-
-   <option>JHANGO</option>
-
-   <option>Other</option>
-
-  <label>Shelf Number</label>
-  <input id="bookShelfNumber" placeholder="e.g. S-03">
-
-  <label>Shelf Section</label>
-  <input id="bookShelfSection" placeholder="e.g. Science">
-
-  <label>Shelf Row</label>
-  <input id="bookShelfRow" placeholder="e.g. Row 2">
-
-  <label>Shelf Position</label>
-  <input id="bookShelfPosition" placeholder="e.g. Position 15">
-
-  <label>Quantity</label>
-
-
-
-  <input
-
-   type="number"
-
-   id="bookQuantity"
-
-   min="1"
-
-   value="1">
-
-
-
-
-
-  <button onclick="addBook()">
-
-    Add Book
-
-  </button>
-
-
-
- </div>
-
-
-
-</section>
-
-
-
-
-
-<!-- =========================================================
-
 BORROW FORM
 
 ========================================================= -->
@@ -4076,7 +4206,7 @@ ADMIN PANEL
 
 
 
-  <h1>‍ MZUGOSS Administrator Panel</h1>
+  <h1>MZUGOSS Administrator Panel</h1>
 
 
 
@@ -4098,89 +4228,275 @@ ADMIN PANEL
 
 
 
-   <button onclick="showAdminSection('adminDashboard')">
-
-     Dashboard
-
-   </button>
+   <button class="admin-tab" data-section="adminDashboard" onclick="showAdminSection('adminDashboard')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-button-label">Dashboard</span></button>
 
 
 
-   <button onclick="showAdminSection('registerStudent')">
-
-     Register Student
-
-   </button>
+   <button class="admin-tab" data-section="registerStudent" onclick="showAdminSection('registerStudent')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg><span class="nav-button-label">Register Student</span></button>
 
 
 
-   <button onclick="showAdminSection('bulkStudents')">
-
-     Import Students
-
-   </button>
+   <button class="admin-tab" data-section="bulkStudents" onclick="showAdminSection('bulkStudents')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span class="nav-button-label">Register Students by File</span></button>
 
 
 
-   <button onclick="showAdminSection('bulkBooks')">
-
-     Import Books
-
-   </button>
+   <button class="admin-tab" data-section="bulkBooks" onclick="showAdminSection('bulkBooks')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span class="nav-button-label">Register Books by File</span></button>
 
 
-
-   <button onclick="showAdminSection('studentRecords')">
-
-    ‍ Students
-
-   </button>
+   <button class="admin-tab" data-section="adminAddBook" onclick="showAdminSection('adminAddBook')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 5.5V22"/><path d="M8 7h8M8 11h8M8 15h6"/></svg><span class="nav-button-label">Register One Book</span></button>
 
 
 
-   <button onclick="showAdminSection('droppedStudents')">
-
-     Dropped Students
-
-   </button>
+   <button class="admin-tab" data-section="studentRecords" onclick="showAdminSection('studentRecords')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 21c.8-4.2 3.1-6 7-6s6.2 1.8 7 6"/><path d="M18 8h3M19.5 6.5v3"/></svg><span class="nav-button-label">Students</span></button>
 
 
 
-   <button onclick="showAdminSection('alumniStudents')">
-
-     Alumni
-
-   </button>
+   <button class="admin-tab" data-section="droppedStudents" onclick="showAdminSection('droppedStudents')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 8 8 8M16 8l-8 8"/></svg><span class="nav-button-label">Dropped Students</span></button>
 
 
 
-   <button onclick="showAdminSection('subjectStatistics')">
+   <button class="admin-tab" data-section="alumniStudents" onclick="showAdminSection('alumniStudents')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 5l9 5-9 5-9-5Z"/><path d="M6 12.5V17c3.5 3 8.5 3 12 0v-4.5M21 10v6"/></svg><span class="nav-button-label">Alumni</span></button>
 
-     Subjects
 
-   </button>
+
+   <button class="admin-tab" data-section="subjectStatistics" onclick="showAdminSection('subjectStatistics')"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 5.5V22M8 7h8M8 11h8M8 15h6"/></svg><span class="nav-button-label">Subjects</span></button>
 
 
 
    <button
     onclick="openLibrarianFromAdmin()"
-    style="background:var(--lightblue);color:#fff">
-
-     Librarian Panel
-
-   </button>
+    style="background:var(--lightblue);color:#fff"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 5.5V22"/><path d="M8 7h8M8 11h8M8 15h6"/></svg><span class="nav-button-label">Librarian Panel</span></button>
 
 
 
-   <button onclick="backToDashboards()">
+   <button onclick="backToDashboards()"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="nav-button-label">Dashboards</span></button>
 
-     Dashboards
+
+
+  </div>
+
+
+
+
+
+<!-- =========================================================
+
+ADD BOOK
+
+========================================================= -->
+
+
+
+<section id="adminAddBook" class="admin-section">
+
+
+
+ <div class="form">
+
+
+
+  <h2> Register One Book</h2>
+
+
+
+  <div id="addBookLookupResult"></div>
+
+
+
+
+
+  <label>Full Name of Book *</label>
+
+
+
+  <input
+
+   id="bookTitle"
+
+   placeholder="Enter the full name of the book" oninput="applyAutomaticShelfToForm()">
+
+
+
+
+
+  <label>Author *</label>
+
+
+
+  <input
+
+   id="bookAuthor"
+
+   placeholder="Enter author">
+
+
+  <label>Book Barcode / Number *</label>
+
+
+
+  <div class="input-group">
+
+
+
+   <input
+
+    id="bookBarcode"
+
+    placeholder="Scan barcode here"
+
+    autocomplete="off"
+
+    onkeydown="barcodeEnter(event,'add')"
+
+    oninput="lookupBookByBarcode('add')">
+
+
+
+   <button
+
+    type="button"
+
+    class="scan-btn"
+
+    onclick="openBarcodeScanner('add')">
+
+     Scan
 
    </button>
 
 
 
   </div>
+
+
+
+  <div class="scanner-help">
+
+
+
+   <strong>Barcode scanner:</strong>
+
+
+
+   Connect a USB/Bluetooth barcode scanner,
+
+   click the barcode field and scan the book.
+
+   Most scanners act like a keyboard and automatically
+
+   type the barcode followed by Enter.
+
+
+
+   <br><br>
+
+
+
+   If the barcode is already registered in this system,
+
+   the title, author and subject will be retrieved automatically.
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <label>Category / Subject</label>
+
+
+
+  <select id="bookCategory" onchange="applyAutomaticShelfToForm()">
+
+
+
+  
+   <option>ACHIEVERS</option>
+   <option>EXCEL AND SUCCEED</option>
+
+   <option>TARGET</option>
+
+   <option>ARISE WITH</option>
+
+   <option>CHANCO</option>
+
+   <option>JHANGO</option>
+
+   <option>Other</option>
+
+  <label>Book Class / Form</label>
+  <select id="bookClass" onchange="applyAutomaticShelfToForm()">
+   <option value="">Not specified</option>
+   <option>Form 1</option>
+   <option>Form 2</option>
+   <option>Form 3</option>
+   <option>Form 4</option>
+  </select>
+
+  <label>Book Number (from first page)</label>
+  <div class="input-group">
+   <input id="bookNumber" placeholder="Scan/capture the number printed on the first page" autocomplete="off">
+   <button type="button" class="scan-btn" onclick="openBookNumberCapture()">Capture</button>
+  </div>
+  <div id="bookNumberCaptureResult"></div>
+
+  <div class="shelf-auto-note">
+   <strong>Automatic shelf arrangement:</strong> the system places the book in the correct department shelf (Technical, Science, Language or Humanities). Within each department, Form 4 is the top level, followed by Form 3, Form 2 and Form 1 at the bottom. Books at the same level are arranged alphabetically.
+  </div>
+
+  <label>Department Shelf</label>
+  <input id="bookShelfNumber" readonly placeholder="Automatic department shelf">
+
+  <label>Department</label>
+  <input id="bookShelfSection" readonly placeholder="Automatic department">
+
+  <label>Form Level</label>
+  <input id="bookShelfRow" readonly placeholder="e.g. Form 4 • Level 1">
+
+  <label>Position Within Level</label>
+  <input id="bookShelfPosition" readonly placeholder="Automatic position">
+
+  <label>Quantity</label>
+
+
+
+  <input
+
+   type="number"
+
+   id="bookQuantity"
+
+   min="1"
+
+   value="1">
+
+
+
+
+
+  <button onclick="addBook()">
+
+    Add Book
+
+  </button>
+
+
+
+ </div>
+
+
+
+</section>
+
+
 
 
 
@@ -4306,15 +4622,17 @@ ADMIN PANEL
 
 
 
-    <label>Library ID *</label>
-
-
+    <label>Student Number (Automatic)</label>
 
     <input
-
      id="newStudentLibraryId"
+     value=""
+     readonly
+     placeholder="MZG/0001">
 
-     placeholder="Example: MZG001">
+    <div class="scanner-help">
+     Student numbers are generated automatically in the format <strong>MZG/0001</strong>, <strong>MZG/0002</strong>, and so on.
+    </div>
 
 
 
@@ -4448,7 +4766,7 @@ ADMIN PANEL
 
 
 
-    <h2> Import Students From File</h2>
+    <h2> Register Students From File</h2>
 
 
 
@@ -4456,9 +4774,7 @@ ADMIN PANEL
 
      Upload a CSV or TXT file containing the student
 
-     <strong>Name</strong>, <strong>Number</strong> and
-
-     <strong>Form</strong>. Every imported student automatically
+     <strong>Name</strong> and <strong>Form</strong>. Student numbers are generated automatically and every imported student automatically
 
      receives an account.
 
@@ -4470,17 +4786,21 @@ ADMIN PANEL
 
      <strong>Required columns:</strong>
 
-     Name, Number, Form
+     Name, Form
 
      <br>
 
      Example:
 
-     <code>Name,Number,Form</code>
+     <code>Name,Form</code>
 
      <br>
 
-     <code>John Banda,MZG001,Form 1</code>
+     <code>John Banda,Form 1</code>
+
+     <br><br>
+
+     Student numbers are created automatically as <strong>MZG/0001</strong>, <strong>MZG/0002</strong>, etc. An old Number column may be present, but the system will generate a new number automatically.
 
      <br><br>
 
@@ -4530,7 +4850,7 @@ ADMIN PANEL
 
      font-weight:bold">
 
-      Create Student Accounts
+      Create All Student Accounts
 
     </button>
 
@@ -4556,7 +4876,7 @@ ADMIN PANEL
 
      border-radius:7px">
 
-     ⬇ Download Student CSV Template
+     Download Student CSV Template
 
     </button>
 
@@ -4592,7 +4912,7 @@ ADMIN PANEL
 
 
 
-    <h2> Import Books From File</h2>
+    <h2> Register Books From File</h2>
 
 
 
@@ -4608,25 +4928,23 @@ ADMIN PANEL
 
     <div class="scanner-help">
 
-     <strong>Required columns:</strong>
+     <strong>Column order:</strong>
 
-     Title, Author, Barcode
+     Full Name of Book, Author, Category, Barcode, Book Number, Class/Form, Shelf Number, Shelf Section, Shelf Level, Shelf Position, Quantity
 
      <br>
 
-     <strong>Optional:</strong>
-
-     Category, Quantity
+     <strong>Required:</strong> Full Name of Book, Author, Barcode
 
      <br>
 
      Example:
 
-     <code>Title,Author,Category,Barcode,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity</code>
+     <code>Full Name of Book,Author,Category,Barcode,BookNumber,Class,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity</code>
 
      <br>
 
-     <code>Things Fall Apart,Chinua Achebe,Literature,LIT003,S-03,Literature,Row 2,Position 15,5</code>
+     <code>Things Fall Apart,Chinua Achebe,Literature,LIT003,LIB-001,Form 1,,,,,5</code>
 
      <br><br>
 
@@ -4696,7 +5014,7 @@ ADMIN PANEL
 
      border-radius:7px">
 
-     ⬇ Download Book CSV Template
+     Download Book CSV Template
 
     </button>
 
@@ -4728,7 +5046,7 @@ ADMIN PANEL
 
 
 
-   <h2>‍ Students By Class</h2>
+   <h2>Students By Class</h2>
 
 
 
@@ -4842,7 +5160,7 @@ ADMIN PANEL
 
       onclick="archiveAllForm4Students()">
 
-       Archive ALL Form 4 → ALUMNI
+       Archive ALL Form 4 to ALUMNI
 
      </button>
 
@@ -4894,7 +5212,7 @@ ADMIN PANEL
 
 
 
-       Promote Form 1 → 2 → 3 → 4
+       Promote Form 1 to Form 2 to Form 3 to Form 4
 
 
 
@@ -5867,6 +6185,10 @@ let books =
 
 
 
+
+
+// Upgrade older saved book records to the new shelf/class/book-number structure.
+books = books.map(b => ({...b, className:b.className || b.bookClass || "", bookNumber:b.bookNumber || ""}));
 
 let borrowed =
 
@@ -7014,6 +7336,10 @@ function displayBooks(){
 
    b.category.toLowerCase().includes(search) ||
 
+   String(b.className || b.bookClass || "").toLowerCase().includes(search) ||
+
+   String(b.bookNumber || "").toLowerCase().includes(search) ||
+
 
 
    String(
@@ -7112,7 +7438,7 @@ function displayBooks(){
 
    <p>
 
-    <strong>Book Number:</strong>
+    <strong>Barcode:</strong>
 
     ${escapeHTML(book.barcode || "Not assigned")}
 
@@ -7121,7 +7447,7 @@ function displayBooks(){
 
 
    <p>
-    <strong>📍 Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
+    <strong>Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
    </p>
    <p>
     <strong>Location:</strong> ${escapeHTML(book.shelfRow || "Row not assigned")}${book.shelfPosition ? `, ${escapeHTML(book.shelfPosition)}` : ""}
@@ -7203,6 +7529,171 @@ function displayBooks(){
 
 /* =========================================================
 
+AUTOMATIC SHELF ARRANGEMENT
+
+========================================================= */
+
+const DEPARTMENT_ORDER = ["Technical", "Science", "Language", "Humanities"];
+const FORM_LEVEL_ORDER = ["Form 4", "Form 3", "Form 2", "Form 1"];
+
+function getBookDepartment(category){
+ const raw = String(category || "Other").trim().toLowerCase();
+
+ // Technical department
+ if(/computer|ict|technical|agriculture|business|accounting|commerce|entrepreneur|design|technology|engineering|woodwork|metalwork|building|home economics|fashion|textile/.test(raw)) return "Technical";
+
+ // Science department
+ if(/science|biology|chemistry|physics|mathematics|maths|general science|health science/.test(raw)) return "Science";
+
+ // Language department
+ if(/language|english|chichewa|french|literature|grammar|linguistics|communication/.test(raw)) return "Language";
+
+ // Humanities department
+ if(/history|geography|humanities|social|civic|religious|religion|life skills|development studies|government|politics|sociology|psychology/.test(raw)) return "Humanities";
+
+ // Keep unknown categories in a predictable departmental location.
+ return "Humanities";
+}
+
+function getBookForm(book){
+ const value = String(book.className || book.bookClass || "").trim();
+ return FORM_LEVEL_ORDER.includes(value) ? value : "Not specified";
+}
+
+function getFormLevel(form){
+ const index = FORM_LEVEL_ORDER.indexOf(form);
+ return index >= 0 ? index + 1 : 5;
+}
+
+function calculateAutomaticShelf(book){
+ const department = getBookDepartment(book.category);
+ const cls = getBookForm(book);
+ const level = getFormLevel(cls);
+ const title = String(book.title || "").trim();
+
+ // Each department is one main shelf. Within it, levels run from top to bottom:
+ // Form 4, Form 3, Form 2, Form 1. Books at the same level are alphabetical.
+ const sameLevel = books
+  .filter(b => b.id !== book.id && getBookDepartment(b.category) === department && getBookForm(b) === cls)
+  .sort((a,b)=>String(a.title||"").localeCompare(String(b.title||""),undefined,{sensitivity:"base",numeric:true}));
+
+ const position = sameLevel.findIndex(b => String(b.title||"").localeCompare(title,undefined,{sensitivity:"base",numeric:true}) > 0);
+ const positionNumber = position < 0 ? sameLevel.length + 1 : position + 1;
+
+ const shelfNumber = `${department} Department Shelf`;
+ const shelfSection = department;
+ const shelfRow = cls === "Not specified"
+   ? "Level 5 • Form not specified"
+   : `${cls} • Level ${level}`;
+ const shelfPosition = cls === "Not specified"
+   ? `Unclassified • Position ${positionNumber}`
+   : `Level ${level} • Position ${positionNumber}`;
+
+ return {shelfNumber, shelfSection, shelfRow, shelfPosition};
+}
+
+function sortBooksByDepartmentAndForm(){
+ books.sort((a,b)=>{
+  const deptA = DEPARTMENT_ORDER.indexOf(getBookDepartment(a.category));
+  const deptB = DEPARTMENT_ORDER.indexOf(getBookDepartment(b.category));
+  if(deptA !== deptB) return deptA - deptB;
+
+  const formA = getFormLevel(getBookForm(a));
+  const formB = getFormLevel(getBookForm(b));
+  if(formA !== formB) return formA - formB;
+
+  return String(a.title||"").localeCompare(String(b.title||""),undefined,{sensitivity:"base",numeric:true});
+ });
+}
+
+function refreshAllBookShelves(){
+ sortBooksByDepartmentAndForm();
+ const snapshot = books.slice();
+ snapshot.forEach(book=>{
+  const shelf=calculateAutomaticShelf(book);
+  book.shelfNumber=shelf.shelfNumber;
+  book.shelfSection=shelf.shelfSection;
+  book.shelfRow=shelf.shelfRow;
+  book.shelfPosition=shelf.shelfPosition;
+ });
+}
+
+function applyAutomaticShelfToForm(){
+ const titleEl = document.getElementById("bookTitle");
+ const categoryEl = document.getElementById("bookCategory");
+ const classEl = document.getElementById("bookClass");
+ if(!titleEl || !categoryEl) return;
+ const temp = {title:titleEl.value,category:categoryEl.value,className:classEl ? classEl.value : ""};
+ const shelf = calculateAutomaticShelf(temp);
+ const n=document.getElementById("bookShelfNumber");
+ const sec=document.getElementById("bookShelfSection");
+ const row=document.getElementById("bookShelfRow");
+ const pos=document.getElementById("bookShelfPosition");
+ if(n)n.value=shelf.shelfNumber;
+ if(sec)sec.value=shelf.shelfSection;
+ if(row)row.value=shelf.shelfRow;
+ if(pos)pos.value=shelf.shelfPosition;
+}
+
+
+/* =========================================================
+
+BOOK NUMBER OCR CAPTURE
+
+========================================================= */
+
+let bookNumberStream = null;
+
+async function openBookNumberCapture(){
+ const modal=document.getElementById("bookNumberCaptureModal");
+ const video=document.getElementById("bookNumberVideo");
+ const status=document.getElementById("bookNumberOcrStatus");
+ modal.style.display="flex";
+ status.textContent="Opening camera...";
+ try{
+  bookNumberStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}},audio:false});
+  video.srcObject=bookNumberStream;
+  await video.play();
+  status.textContent="Place the first page flat and make the printed book number sharp and well lit, then press Capture & Read Number.";
+ }catch(e){
+  status.textContent="Camera could not be opened. You can type the book number manually in the field.";
+ }
+}
+
+function closeBookNumberCapture(){
+ if(bookNumberStream){bookNumberStream.getTracks().forEach(t=>t.stop());bookNumberStream=null;}
+ const video=document.getElementById("bookNumberVideo");
+ if(video)video.srcObject=null;
+ const modal=document.getElementById("bookNumberCaptureModal");
+ if(modal)modal.style.display="none";
+}
+
+async function captureBookNumberImage(){
+ const video=document.getElementById("bookNumberVideo");
+ const canvas=document.getElementById("bookNumberCanvas");
+ const status=document.getElementById("bookNumberOcrStatus");
+ if(!video || !video.videoWidth){status.textContent="Camera image is not ready yet.";return;}
+ canvas.width=video.videoWidth; canvas.height=video.videoHeight;
+ canvas.getContext("2d").drawImage(video,0,0,canvas.width,canvas.height);
+ status.textContent="Reading the first page... please wait.";
+ try{
+  if(typeof Tesseract === "undefined") throw new Error("OCR library unavailable");
+  const result=await Tesseract.recognize(canvas.toDataURL("image/jpeg",0.92),"eng",{logger:m=>{if(m.status && m.progress) status.textContent=`Reading book number: ${m.status} ${Math.round(m.progress*100)}%`;}});
+  const text=String(result.data.text||"").replace(/\s+/g," ").trim();
+  const candidates=text.match(/[A-Z0-9][A-Z0-9\-\/]{2,}/gi)||[];
+  const best=candidates.sort((a,b)=>b.length-a.length)[0]||text.slice(0,80);
+  const input=document.getElementById("bookNumber");
+  if(input) input.value=best.trim();
+  document.getElementById("bookNumberCaptureResult").innerHTML=`<div class="ocr-result"><strong>Captured book number:</strong> ${escapeHTML(best || "Not detected")}<br><small>Check the value before saving because handwriting or small print can be read incorrectly.</small></div>`;
+  status.textContent="Capture complete.";
+  closeBookNumberCapture();
+ }catch(e){
+  status.textContent="The number could not be read automatically. Please type it manually and save.";
+ }
+}
+
+/* =========================================================
+
 ADD BOOK
 
 ========================================================= */
@@ -7250,6 +7741,12 @@ function addBook(){
    "bookCategory"
 
   ).value;
+
+ const className =
+  document.getElementById("bookClass").value;
+
+ const bookNumber =
+  document.getElementById("bookNumber").value.trim();
 
 
 
@@ -7352,6 +7849,8 @@ function addBook(){
 
   category,
 
+  className,
+  bookNumber,
   shelfNumber,
 
   shelfSection,
@@ -7379,6 +7878,7 @@ function addBook(){
 
 
  books.push(newBook);
+ refreshAllBookShelves();
 
 
 
@@ -7394,7 +7894,7 @@ function addBook(){
 
 
 
- showPage("books");
+ showAdminSection("adminDashboard");
 
 
 
@@ -12466,7 +12966,7 @@ function displayStudentBooks(){
 
 
    <p>
-    <strong>📍 Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
+    <strong>Shelf:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")} ${book.shelfSection ? `— ${escapeHTML(book.shelfSection)}` : ""}
    </p>
 
    <p>
@@ -12625,7 +13125,7 @@ function openStudentRequestModal(bookId){
    <strong>Barcode:</strong>
    ${escapeHTML(book.barcode || "N/A")}
   </p>
-  <p><strong>📍 Shelf Number:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")}</p>
+  <p><strong>Shelf Number:</strong> ${escapeHTML(book.shelfNumber || "Not assigned")}</p>
   <p><strong>Section:</strong> ${escapeHTML(book.shelfSection || book.category || "Not assigned")}</p>
   <p><strong>Row:</strong> ${escapeHTML(book.shelfRow || "Not assigned")}</p>
   <p><strong>Position:</strong> ${escapeHTML(book.shelfPosition || "Not assigned")}</p>
@@ -13156,6 +13656,12 @@ function showAdminSection(sectionId){
 
   updateAdminDashboard();
 
+ if(sectionId === "adminAddBook")
+  resetBookForm();
+
+ if(sectionId === "registerStudent")
+  refreshNextStudentNumber();
+
 
 
 
@@ -13419,6 +13925,50 @@ function previewPhoto(event){
 
 
 /* =========================================================
+AUTOMATIC STUDENT NUMBERING
+========================================================= */
+
+function getNextStudentNumber(){
+ const numbers = students.map(s => {
+  const value=String(s.libraryId || "");
+  const match=value.match(/^MZG\/(\d+)$/i) || value.match(/^MZG[-_ ]?(\d+)$/i);
+  return match ? parseInt(match[1],10) : 0;
+ });
+ const next = Math.max(0,...numbers) + 1;
+ return `MZG/${String(next).padStart(4,"0")}`;
+}
+
+function refreshNextStudentNumber(){
+ const input=document.getElementById("newStudentLibraryId");
+ if(input) input.value=getNextStudentNumber();
+}
+
+/* =========================================================
+
+STUDENT DUPLICATE CHECK
+
+========================================================= */
+
+function checkStudentDuplicate(){
+ const name=(document.getElementById("newStudentName")?.value||"").trim();
+ const id=(document.getElementById("newStudentLibraryId")?.value||"").trim();
+ const box=document.getElementById("studentDuplicateResult");
+ if(!box) return false;
+ const existing=students.find(s=>id && String(s.libraryId||"").trim().toLowerCase()===id.toLowerCase());
+ if(existing){
+  box.innerHTML=`<div class="duplicate-warning">Warning: This Library ID is already registered for <strong>${escapeHTML(existing.name)}</strong> (${escapeHTML(existing.form||"Form not set")}). The student has NOT been added again.</div>`;
+  return true;
+ }
+ const sameName=name ? students.find(s=>String(s.name||"").trim().toLowerCase()===name.toLowerCase()) : null;
+ if(sameName){
+  box.innerHTML=`<div class="duplicate-warning">Warning: A student with this exact name already exists: <strong>${escapeHTML(sameName.name)}</strong>, Library ID <strong>${escapeHTML(sameName.libraryId)}</strong>. Please verify before registering.</div>`;
+  return true;
+ }
+ box.innerHTML=id ? `<div class="duplicate-ok">✓ No matching student found. This Library ID is available.</div>` : "";
+ return false;
+}
+
+/* =========================================================
 
 REGISTER STUDENT
 
@@ -13428,18 +13978,20 @@ REGISTER STUDENT
 
 function registerStudent(){
  const name=document.getElementById("newStudentName").value.trim();
- const libraryId=document.getElementById("newStudentLibraryId").value.trim();
  const form=document.getElementById("newStudentForm").value;
+ const libraryId=getNextStudentNumber();
  const startYear=new Date().getFullYear();
- if(!name || !libraryId || !form){ alert("Please fill in the student's name, library ID and form."); return; }
- if(students.some(s=>s.libraryId.toLowerCase()===libraryId.toLowerCase())){ alert("Library ID already exists!"); return; }
+ if(!name || !form){ alert("Please fill in the student's name and form."); return; }
+ if(students.some(s=>String(s.name||"").trim().toLowerCase()===name.toLowerCase())){ checkStudentDuplicate(); return; }
  students.push({id:Date.now(),name,libraryId,form,startYear,password:DEFAULT_STUDENT_PASSWORD,photo:tempPhotoUrl||DEFAULT_STUDENT_PHOTO,mustChangeCredentials:true});
  saveData(); updateStudentSuggestions();
- showToast("Student registered successfully! Default password: " + DEFAULT_STUDENT_PASSWORD);
+ showToast(`Student registered successfully! Student Number: ${libraryId}. Default password: ${DEFAULT_STUDENT_PASSWORD}`);
  ["newStudentName","newStudentLibraryId","newStudentPhoto"].forEach(id=>{const el=document.getElementById(id);if(el)el.value="";});
  document.getElementById("newStudentForm").value="";
+ document.getElementById("studentDuplicateResult").innerHTML="";
  tempPhotoUrl="";
  const preview=document.getElementById("studentPhotoPreview"); if(preview)preview.src=DEFAULT_STUDENT_PHOTO;
+ refreshNextStudentNumber();
  displayAdminClasses(); updateAdminDashboard();
 }
 
@@ -13605,9 +14157,9 @@ function importStudentsFromFile(){
 
 
 
-   if(nameIndex < 0 || idIndex < 0 || formIndex < 0)
+   if(nameIndex < 0 || formIndex < 0)
     throw new Error(
-     "Required columns are Name, Number and Form."
+     "Required columns are Name and Form. Student numbers are generated automatically."
     );
 
    let created = 0;
@@ -13619,8 +14171,7 @@ function importStudentsFromFile(){
     const name =
      String(row[nameIndex] || "").trim();
 
-    const libraryId =
-     String(row[idIndex] || "").trim();
+    const libraryId = getNextStudentNumber();
 
     const form =
      String(row[formIndex] || "").trim();
@@ -13639,7 +14190,7 @@ function importStudentsFromFile(){
 
      skipped++;
      errors.push(
-      `Row ${rowOffset + 2}: missing Name, Number or Form.`
+      `Row ${rowOffset + 2}: missing Name or Form.`
      );
 
      return;
@@ -13667,17 +14218,11 @@ function importStudentsFromFile(){
 
     }
 
-    if(
-     students.some(
-      s =>
-       s.libraryId.toLowerCase() ===
-       libraryId.toLowerCase()
-     )
-    ){
+    if(students.some(s=>String(s.name||"").trim().toLowerCase()===name.toLowerCase())){
 
      skipped++;
      errors.push(
-      `Row ${rowOffset + 2}: ${libraryId} already exists.`
+      `Row ${rowOffset + 2}: student name "${name}" already exists.`
      );
 
      return;
@@ -13808,7 +14353,7 @@ function importBooksFromFile(){
    const titleIndex =
     findColumn(
      headers,
-     ["title","booktitle","name"]
+     ["title","fullnameofbook","booktitle","bookname","name"]
     );
 
    const authorIndex =
@@ -13826,8 +14371,10 @@ function importBooksFromFile(){
    const barcodeIndex =
     findColumn(
      headers,
-     ["barcode","booknumber","number","isbn"]
+     ["barcode","barcodenumber"]
     );
+   const bookNumberIndex = findColumn(headers,["booknumber","librarybooknumber","accessionnumber","number"]);
+   const classIndex = findColumn(headers,["class","form","bookclass"]);
 
    const shelfNumberIndex = findColumn(headers,["shelfnumber","shelf","shelfno"]);
    const shelfSectionIndex = findColumn(headers,["shelfsection","section","shelfcategory"]);
@@ -13846,7 +14393,7 @@ function importBooksFromFile(){
     barcodeIndex < 0
    )
     throw new Error(
-     "Required columns are Title, Author and Barcode."
+     "Required columns are Full Name of Book, Author and Barcode."
     );
 
    let created = 0;
@@ -13869,6 +14416,8 @@ function importBooksFromFile(){
 
     const barcode =
      String(row[barcodeIndex] || "").trim();
+    const bookNumber = String(row[bookNumberIndex] || "").trim();
+    const className = String(row[classIndex] || "").trim();
 
     const shelfNumber = String(row[shelfNumberIndex] || "").trim();
     const shelfSection = String(row[shelfSectionIndex] || category || "").trim();
@@ -13888,26 +14437,31 @@ function importBooksFromFile(){
      skipped++;
 
      errors.push(
-      `Row ${rowOffset + 2}: missing Title, Author or Barcode.`
+      `Row ${rowOffset + 2}: missing Full Name of Book, Author or Barcode.`
      );
 
      return;
 
     }
 
-    if(
-     books.some(
-      b =>
-       String(b.barcode || "")
-       .toLowerCase() ===
-       barcode.toLowerCase()
-     )
-    ){
+    const existingBarcode = books.find(
+     b => String(b.barcode || "").trim().toLowerCase() === barcode.toLowerCase()
+    );
+    const existingBook = books.find(
+     b => String(b.title || "").trim().toLowerCase() === title.toLowerCase() &&
+          String(b.author || "").trim().toLowerCase() === author.toLowerCase()
+    );
+
+    if(existingBarcode || existingBook){
 
      skipped++;
 
+     const reason = existingBarcode
+      ? `barcode ${barcode} already belongs to “${existingBarcode.title}”`
+      : `“${title}” by ${author} is already in the catalogue`;
+
      errors.push(
-      `Row ${rowOffset + 2}: barcode ${barcode} already exists.`
+      `Row ${rowOffset + 2}: ${reason}. The existing book record was kept unchanged.`
      );
 
      return;
@@ -13926,6 +14480,8 @@ function importBooksFromFile(){
      author,
 
      category,
+     className,
+     bookNumber,
 
      shelfNumber,
 
@@ -13947,6 +14503,7 @@ function importBooksFromFile(){
 
    });
 
+   refreshAllBookShelves();
    saveData();
    updateStats();
    updateAdminDashboard();
@@ -14028,7 +14585,7 @@ function downloadStudentTemplate(){
 
  downloadTextFile(
   "mzugoss_students_template.csv",
-  "Name,Number,Form\nJohn Banda,MZG001,Form 1\n"
+  "Name,Form\nJohn Banda,Form 1\n"
  );
 
 }
@@ -14037,7 +14594,7 @@ function downloadBookTemplate(){
 
  downloadTextFile(
   "mzugoss_books_template.csv",
-  "Title,Author,Category,Barcode,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity\nThings Fall Apart,Chinua Achebe,Literature,LIT003,S-03,Literature,Row 2,Position 15,5\n"
+  "Full Name of Book,Author,Category,Barcode,BookNumber,Class,ShelfNumber,ShelfSection,ShelfRow,ShelfPosition,Quantity\nThings Fall Apart,Chinua Achebe,Literature,LIT003,LIB-001,Form 1,,,,,5\n"
  );
 
 }
@@ -15833,6 +16390,14 @@ function handleScannedBarcode(barcode){
 
   lookupBookByBarcode("add");
 
+  // After a new barcode is scanned, move directly to first-page book-number capture.
+  setTimeout(() => {
+   const bn = document.getElementById("bookNumber");
+   const barcodeInput = document.getElementById("bookBarcode");
+   const existing = findBookByBarcode(barcodeInput ? barcodeInput.value : "");
+   if(bn && !bn.value && !existing) openBookNumberCapture();
+  },350);
+
 
 
  }
@@ -16127,12 +16692,43 @@ document.addEventListener(
 
 
 
+
+
+// Final migration/ordering for existing records.
+try{ refreshAllBookShelves(); saveData(); }catch(e){ console.warn("Shelf migration:",e); }
 </script>
 
 
 
+
+<script>
+/* Navigation accessibility/active-state enhancement */
+(function(){
+  function markAdminTab(sectionId){
+    document.querySelectorAll('#adminPanel .admin-tab').forEach(function(btn){
+      var active = btn.getAttribute('data-section') === sectionId;
+      btn.classList.toggle('active', active);
+      if(active) btn.setAttribute('aria-current','page');
+      else btn.removeAttribute('aria-current');
+    });
+  }
+
+  var originalShowAdminSection = window.showAdminSection;
+  if(typeof originalShowAdminSection === 'function'){
+    window.showAdminSection = function(sectionId){
+      var result = originalShowAdminSection.apply(this, arguments);
+      markAdminTab(sectionId);
+      return result;
+    };
+  }
+
+  document.addEventListener('click', function(e){
+    var tab = e.target.closest && e.target.closest('#adminPanel .admin-tab');
+    if(tab) markAdminTab(tab.getAttribute('data-section'));
+  });
+})();
+</script>
+
 </body>
 
 </html>
-
-hey, can u change the admin panel, there should be another option of registering students where theadmin just uploads a file containing the students' names and number and form .and the system automatically creates accounts for all students. and by default the students have one password and one profile pic.and soon after logging in they can change therir password and profile pic.AND ALSO SAME GOES FOR UPLOADING BOOKS.
