@@ -159,6 +159,13 @@ button:disabled{
 
 
 /* =========================================================
+LIBRARIAN APPROVAL NOTIFICATION
+========================================================= */
+let librarianApprovalNotificationTimer=null;
+function showLibrarianApprovalNotification(studentName,bookTitle){const box=document.getElementById("librarianApprovalNotification");if(!box)return;document.getElementById("librarianApprovalTitle").textContent="Request Approved";document.getElementById("librarianApprovalText").textContent=`${studentName} was approved to borrow "${bookTitle}". The borrowing position is now reserved.`;box.style.display="flex";clearTimeout(librarianApprovalNotificationTimer);librarianApprovalNotificationTimer=setTimeout(hideLibrarianApprovalNotification,7000)}
+function hideLibrarianApprovalNotification(){const box=document.getElementById("librarianApprovalNotification");if(box)box.style.display="none";clearTimeout(librarianApprovalNotificationTimer)}
+
+/* =========================================================
 
 LOGIN
 
@@ -2716,6 +2723,573 @@ body{
   }
 }
 
+
+/* =========================================================
+   FINAL STUDENT PROFILE PHOTO SIZE
+   Small circular ID-style photo with student details beside it.
+   ========================================================= */
+.student-profile{
+  align-items:center !important;
+  gap:14px !important;
+  padding:20px 22px !important;
+}
+.student-profile img{
+  width:58px !important;
+  height:58px !important;
+  min-width:58px !important;
+  min-height:58px !important;
+  border-radius:50% !important;
+  object-fit:cover !important;
+  border:3px solid var(--green) !important;
+  flex:0 0 58px !important;
+}
+.student-profile > div{
+  flex:1;
+  min-width:0;
+}
+@media(max-width:600px){
+  .student-profile{
+    flex-direction:row !important;
+    text-align:left !important;
+    align-items:center !important;
+  }
+  .student-profile img{
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    min-height:52px !important;
+    flex-basis:52px !important;
+  }
+}
+
+
+/* =========================================================
+STUDENT ID CARD PROFILE
+========================================================= */
+.student-profile{
+ display:block !important;
+ padding:0 !important;
+ margin-bottom:25px !important;
+ background:transparent !important;
+ box-shadow:none !important;
+}
+
+.student-id-card{
+ width:100%;
+ max-width:720px;
+ min-height:205px;
+ margin:0 auto;
+ overflow:hidden;
+ position:relative;
+ border-radius:16px;
+ background:linear-gradient(135deg,#ffffff 0%,#f7fbff 72%,#eefaf4 100%);
+ border:1px solid rgba(15,67,102,.14);
+ box-shadow:0 12px 30px rgba(15,67,102,.16);
+}
+
+.student-id-card::after{
+ content:"";
+ position:absolute;
+ right:-70px;
+ bottom:-95px;
+ width:240px;
+ height:180px;
+ border-radius:50%;
+ background:rgba(30,170,100,.08);
+ pointer-events:none;
+}
+
+.student-id-top{
+ min-height:64px;
+ padding:12px 18px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:18px;
+ color:#fff;
+ background:linear-gradient(100deg,#075b7d,#0b6e9b 58%,#164f86);
+ position:relative;
+ z-index:1;
+}
+
+.student-id-school{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ min-width:0;
+}
+
+.student-id-school strong{
+ display:block;
+ font-size:12px;
+ letter-spacing:.5px;
+ line-height:1.25;
+}
+
+.student-id-school small{
+ display:block;
+ margin-top:2px;
+ font-size:9px;
+ opacity:.85;
+}
+
+.student-id-mark{
+ width:32px;
+ height:32px;
+ flex:0 0 32px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ background:rgba(255,255,255,.16);
+ border:1px solid rgba(255,255,255,.45);
+ font-size:15px;
+ font-weight:800;
+}
+
+.student-id-title{
+ font-size:18px;
+ font-weight:800;
+ letter-spacing:.8px;
+ white-space:nowrap;
+}
+
+.student-id-body{
+ display:flex;
+ align-items:center;
+ gap:24px;
+ padding:22px 28px;
+ position:relative;
+ z-index:1;
+}
+
+.student-id-photo{
+ width:92px !important;
+ height:112px !important;
+ min-width:92px !important;
+ min-height:112px !important;
+ flex:0 0 92px !important;
+ object-fit:cover !important;
+ border-radius:12px !important;
+ border:3px solid #fff !important;
+ outline:2px solid #1a6d91 !important;
+ box-shadow:0 5px 14px rgba(0,0,0,.16) !important;
+}
+
+.student-id-details{
+ flex:1;
+ min-width:0;
+ display:flex;
+ flex-direction:column;
+ gap:11px;
+}
+
+.student-id-row{
+ display:grid;
+ grid-template-columns:105px minmax(0,1fr);
+ align-items:center;
+ gap:10px;
+ font-size:13px;
+}
+
+.student-id-row span{
+ color:#63717d;
+ font-weight:600;
+}
+
+.student-id-row strong{
+ color:#182b38;
+ font-size:14px;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+@media(max-width:600px){
+ .student-id-top{
+  padding:10px 12px;
+  gap:8px;
+ }
+ .student-id-title{
+  font-size:13px;
+ }
+ .student-id-school strong{
+  font-size:10px;
+ }
+ .student-id-school small{
+  font-size:8px;
+ }
+ .student-id-body{
+  gap:16px;
+  padding:18px 16px;
+ }
+ .student-id-photo{
+  width:72px !important;
+  height:90px !important;
+  min-width:72px !important;
+  min-height:90px !important;
+  flex-basis:72px !important;
+ }
+ .student-id-row{
+  grid-template-columns:76px minmax(0,1fr);
+  gap:6px;
+  font-size:11px;
+ }
+ .student-id-row strong{
+  font-size:12px;
+ }
+}
+
+
+.librarian-approval-notification{position:fixed;top:92px;right:22px;z-index:5000;display:none;align-items:center;gap:12px;min-width:min(430px,calc(100vw - 30px));max-width:520px;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,#0f9d58,#087443);color:#fff;box-shadow:0 16px 38px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.22);animation:librarianApprovalIn .35s ease-out}.librarian-approval-notification-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:#087443;font-weight:900;font-size:20px;flex:0 0 34px}.librarian-approval-notification strong{display:block;font-size:15px}.librarian-approval-notification div div{font-size:13px;margin-top:2px;line-height:1.35}.librarian-approval-notification button{margin-left:auto;border:0;background:rgba(255,255,255,.16);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:21px;line-height:1}@keyframes librarianApprovalIn{from{opacity:0;transform:translateY(-16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}@media(max-width:600px){.librarian-approval-notification{top:82px;right:10px;left:10px;min-width:0}}
+
+
+/* =========================================================
+   MZUGOSS // EPIC DESIGN SYSTEM v3
+   Premium dark/light interface, motion, glass surfaces, SVG nav
+   ========================================================= */
+:root{
+  --bg:#07111f; --bg2:#0b1728; --surface:#0e1c2f; --surface2:#13243b;
+  --card:rgba(16,31,51,.84); --text:#f7fbff; --muted:#91a4bb;
+  --line:rgba(255,255,255,.10); --accent:#5ee7ff; --accent2:#7c6cff;
+  --success:#35e59a; --warning:#ffbd59; --danger:#ff667d;
+  --shadow-premium:0 24px 80px rgba(0,0,0,.42);
+  --shadow-soft:0 12px 40px rgba(0,0,0,.22);
+  --radius-xl:28px; --radius-lg:20px; --radius-md:14px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html[data-theme="light"]{
+  --bg:#f3f7fc; --bg2:#eaf0f8; --surface:#ffffff; --surface2:#f7faff;
+  --card:rgba(255,255,255,.92); --text:#0b1730; --muted:#63748a;
+  --line:rgba(11,23,48,.10); --accent:#087ea4; --accent2:#6255e7;
+  --shadow-premium:0 24px 70px rgba(30,55,90,.16);
+  --shadow-soft:0 12px 36px rgba(30,55,90,.10);
+}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(circle at 10% 0%,rgba(94,231,255,.10),transparent 28%),radial-gradient(circle at 90% 10%,rgba(124,108,255,.13),transparent 30%),var(--bg)!important;
+  color:var(--text)!important;
+  transition:background .45s var(--ease),color .35s var(--ease);
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
+button,input,select,textarea{transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease),transform .25s var(--ease),color .25s var(--ease)}
+button{font-weight:700;letter-spacing:.01em}
+button:hover{transform:translateY(-2px)}
+button:active{transform:translateY(0) scale(.98)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(94,231,255,.24);outline-offset:2px}
+
+/* Landing / welcome */
+#loginScreen{
+  background:var(--bg)!important; isolation:isolate;
+}
+#loginScreen:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 20% 30%,rgba(94,231,255,.20),transparent 25%),radial-gradient(circle at 80% 70%,rgba(124,108,255,.22),transparent 27%);filter:blur(18px);animation:ambientFloat 12s ease-in-out infinite alternate;z-index:-1}
+.login-background{inset:0!important;opacity:.78}
+.login-background:after{background:linear-gradient(120deg,rgba(4,13,26,.86),rgba(4,13,26,.48),rgba(4,13,26,.88))!important}
+.background-track{animation:slides 15s infinite!important;filter:saturate(.9) contrast(1.05)}
+.background-track img{opacity:.9;transform:scale(1.04);animation:heroZoom 7s ease-in-out infinite alternate}
+.welcome-text{
+  position:relative;max-width:920px!important;padding:58px 64px!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:34px!important;
+  background:linear-gradient(135deg,rgba(8,20,36,.72),rgba(14,31,52,.42))!important;backdrop-filter:blur(24px) saturate(130%);box-shadow:0 40px 120px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.10)!important;animation:pageIn .9s var(--ease) both!important;
+}
+.welcome-text:before{content:"MZUGOSS • DIGITAL LIBRARY";display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(94,231,255,.28);border-radius:999px;background:rgba(94,231,255,.08);color:#aaf4ff;font-size:11px;font-weight:800;letter-spacing:.16em;margin-bottom:18px}
+.welcome-text h1{font-size:clamp(36px,5vw,68px)!important;letter-spacing:-.045em!important;line-height:1.02!important;text-shadow:0 8px 35px rgba(0,0,0,.38)}
+.welcome-text p{font-size:18px!important;color:#c5d6e8!important;letter-spacing:.02em}
+.welcome-text button,.welcome-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),#8af4ff)!important;color:#03101b!important;border-radius:16px!important;padding:16px 30px!important;box-shadow:0 14px 36px rgba(94,231,255,.22)!important}
+.welcome-text button:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.6) 50%,transparent 75%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.welcome-text button:hover:after{transform:translateX(120%)}
+
+/* Dashboard chooser */
+#dashboardSelector{background:transparent!important;padding:52px 24px 70px!important;position:relative;overflow:hidden}
+#dashboardSelector:before{content:"";position:absolute;width:520px;height:520px;left:-180px;top:60px;border-radius:50%;background:rgba(94,231,255,.10);filter:blur(80px);pointer-events:none}
+.dashboard-header{position:relative;margin-bottom:46px!important;animation:pageIn .7s var(--ease) both}
+.dashboard-header img{width:86px!important;height:86px!important;padding:8px!important;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.dashboard-header h1{font-size:clamp(32px,4vw,52px)!important;letter-spacing:-.04em!important;color:var(--text)!important}
+.dashboard-header p{color:var(--muted)!important}
+.dashboard-grid{position:relative;max-width:1180px!important;gap:22px!important}
+.dashboard-card{
+  position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035))!important;color:var(--text)!important;border:1px solid var(--line);border-radius:24px!important;padding:30px!important;box-shadow:var(--shadow-premium)!important;backdrop-filter:blur(18px);animation:cardIn .7s var(--ease) both;transition:transform .4s var(--ease),border-color .3s,box-shadow .4s!important
+}
+html[data-theme="light"] .dashboard-card{background:rgba(255,255,255,.92)!important}
+.dashboard-card:nth-child(2){animation-delay:.08s}.dashboard-card:nth-child(3){animation-delay:.16s}
+.dashboard-card:before{content:"";position:absolute;inset:-40% -20% auto;height:180px;background:radial-gradient(circle,rgba(94,231,255,.16),transparent 65%);pointer-events:none}
+.dashboard-card:hover{transform:translateY(-10px) scale(1.012)!important;border-color:rgba(94,231,255,.35);box-shadow:0 32px 90px rgba(0,0,0,.38)!important}
+.dashboard-card h2{color:var(--text)!important;letter-spacing:-.02em}
+.dashboard-card p{color:var(--muted)!important}
+.role-icon{width:58px!important;height:58px!important;display:grid!important;place-items:center;border-radius:18px;background:linear-gradient(135deg,rgba(94,231,255,.16),rgba(124,108,255,.15));color:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.role-icon svg{width:30px;height:30px}
+.dashboard-card button{border-radius:13px!important;padding:14px!important;background:linear-gradient(135deg,var(--accent),#7d7cff)!important;color:#04111e!important;box-shadow:0 12px 30px rgba(94,231,255,.16)!important}
+.dashboard-card button.student-btn{background:linear-gradient(135deg,#4ee6a4,#45b6ff)!important}
+.dashboard-card button.admin-btn{background:linear-gradient(135deg,#9d8cff,#e47cff)!important}
+.dashboard-logout{background:rgba(255,255,255,.06)!important;border:1px solid var(--line)!important;color:var(--text)!important;border-radius:12px!important}
+
+/* All top navigation */
+nav{background:rgba(7,17,31,.82)!important;color:var(--text)!important;border-bottom:1px solid var(--line);backdrop-filter:blur(22px) saturate(140%);padding:10px clamp(16px,4vw,52px)!important;box-shadow:0 12px 35px rgba(0,0,0,.18)!important}
+html[data-theme="light"] nav{background:rgba(255,255,255,.82)!important}
+.brand{gap:12px!important}.logo{width:46px!important;height:46px!important;background:var(--surface)!important;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+.logo-text{font-size:17px!important;color:var(--text)}.logo-subtitle{color:var(--muted)!important}
+nav>div:last-child{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav button{color:var(--muted)!important;border:1px solid transparent!important;border-radius:11px!important;padding:10px 12px!important;display:inline-flex!important;align-items:center!important;gap:8px!important}
+nav button:hover,nav button.active{color:var(--text)!important;background:rgba(94,231,255,.09)!important;border-color:rgba(94,231,255,.16)!important}
+.nav-svg,.ui-icon svg{width:18px!important;height:18px!important;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.nav-button-label{white-space:nowrap}
+
+/* Admin menu */
+.admin-header,.student-panel-header{position:relative;background:linear-gradient(135deg,rgba(11,27,47,.92),rgba(12,23,40,.76))!important;color:var(--text)!important;border-bottom:1px solid var(--line)!important;box-shadow:var(--shadow-soft)!important}
+html[data-theme="light"] .admin-header,html[data-theme="light"] .student-panel-header{background:linear-gradient(135deg,#fff,#eef5fc)!important}
+.admin-header h1,.student-panel-header h1{color:var(--text)!important;letter-spacing:-.03em}
+.admin-header p,.student-panel-header p{color:var(--muted)!important}
+.admin-menu{position:sticky!important;top:0!important;z-index:900!important;display:flex!important;gap:6px!important;overflow-x:auto!important;padding:10px 14px!important;background:rgba(7,17,31,.84)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(18px)}
+html[data-theme="light"] .admin-menu{background:rgba(255,255,255,.88)!important}
+.admin-tab{flex:0 0 auto;background:transparent!important;color:var(--muted)!important;border:1px solid transparent!important;border-radius:12px!important;padding:11px 14px!important;display:inline-flex!important;align-items:center!important;gap:8px!important}
+.admin-tab:hover,.admin-tab.active{background:rgba(94,231,255,.10)!important;color:var(--text)!important;border-color:rgba(94,231,255,.18)!important;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+
+/* Page surfaces */
+.page{animation:pageIn .45s var(--ease) both}
+.hero{background:linear-gradient(135deg,rgba(94,231,255,.12),rgba(124,108,255,.10))!important;border:1px solid var(--line)!important;border-radius:24px!important;box-shadow:var(--shadow-premium)!important;color:var(--text)!important}
+.hero h1{color:var(--text)!important}
+section h1,section h2,section h3{color:var(--text)!important;letter-spacing:-.025em}
+section p,label,.muted,.scanner-help{color:var(--muted)!important}
+.card,.stat-card,.message-card,.book-card,.student-card,.dashboard-section,.panel-card,.profile-card,.form-card{background:var(--card)!important;color:var(--text)!important;border:1px solid var(--line)!important;box-shadow:var(--shadow-soft)!important;border-radius:18px!important}
+input,select,textarea{background:var(--surface2)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:12px!important;padding:12px 14px!important}
+input::placeholder,textarea::placeholder{color:var(--muted)!important}
+input:focus,select:focus,textarea:focus{border-color:rgba(94,231,255,.55)!important;box-shadow:0 0 0 4px rgba(94,231,255,.09)!important}
+.search-box{background:var(--card)!important;border:1px solid var(--line)!important;border-radius:18px!important;box-shadow:var(--shadow-soft)!important}
+.search-box button,.main-button,.scan-btn,.borrow-submit,.return-btn,.approve-btn,.admin-btn,.librarian-btn,.student-btn{border-radius:12px!important}
+
+/* Tables */
+table{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-soft)!important}
+th{background:linear-gradient(135deg,rgba(94,231,255,.14),rgba(124,108,255,.14))!important;color:var(--text)!important;border-bottom:1px solid var(--line)!important}
+td{border-color:var(--line)!important;color:var(--text)!important}
+
+/* Every modal / popup */
+.modal{background:rgba(2,8,18,.72)!important;backdrop-filter:blur(12px)!important;animation:fadeIn .25s ease both}
+.modal>div,.modal .modal-content,.modal-content{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:24px!important;box-shadow:0 35px 100px rgba(0,0,0,.55)!important;animation:modalIn .45s var(--ease) both}
+.modal h1,.modal h2,.modal h3,.modal p,.modal label{color:var(--text)!important}
+.close-btn{background:rgba(255,255,255,.07)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:10px!important}
+
+/* Auth screens */
+.student-login-box,.login-box,.auth-box,.password-modal,.admin-password-box{background:var(--card)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:24px!important;box-shadow:var(--shadow-premium)!important;backdrop-filter:blur(20px)}
+.student-login-box h2,.login-box h2,.auth-box h2{color:var(--text)!important}
+.student-login-box button,.login-box button,.auth-box button{border-radius:12px!important;background:linear-gradient(135deg,var(--accent),#7c6cff)!important;color:#04111d!important}
+.error{color:var(--danger)!important}
+
+/* Student ID / profile */
+.student-profile{background:linear-gradient(135deg,rgba(94,231,255,.08),rgba(124,108,255,.07))!important;border:1px solid var(--line)!important;border-radius:20px!important;box-shadow:var(--shadow-soft)!important}
+.student-profile img{width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important;border-radius:50%!important;object-fit:cover!important;border:3px solid var(--accent)!important;box-shadow:0 0 0 5px rgba(94,231,255,.08),0 10px 28px rgba(0,0,0,.24)!important}
+
+/* Messages / notifications */
+.message-card{transition:transform .3s var(--ease),border-color .3s,box-shadow .3s!important}
+.message-card:hover{transform:translateY(-4px);border-color:rgba(94,231,255,.28)!important}
+.librarian-approval-notification{background:linear-gradient(135deg,#0d2632,#172b4c)!important;border:1px solid rgba(53,229,154,.35)!important;color:#fff!important;border-radius:16px!important;box-shadow:0 20px 60px rgba(0,0,0,.35)!important}
+html[data-theme="light"] .librarian-approval-notification{background:linear-gradient(135deg,#ecfff7,#eff6ff)!important;color:#0b1730!important}
+
+/* Back buttons */
+.back-btn,.ui-back-button{display:inline-flex!important;align-items:center!important;gap:8px!important;background:rgba(255,255,255,.06)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:11px!important;padding:10px 14px!important}
+.back-btn:hover,.ui-back-button:hover{background:rgba(94,231,255,.10)!important;border-color:rgba(94,231,255,.24)!important}
+
+/* Theme switch */
+.ui-theme-toggle{display:inline-flex!important;align-items:center;justify-content:center;width:42px;height:42px;padding:0!important;border-radius:12px!important;background:rgba(255,255,255,.06)!important;color:var(--text)!important;border:1px solid var(--line)!important}
+.ui-theme-toggle svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Loading and micro motion */
+@keyframes pageIn{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ambientFloat{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,-2%,0) scale(1.06)}}
+@keyframes heroZoom{from{transform:scale(1.03)}to{transform:scale(1.10)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media(max-width:800px){.welcome-text{padding:38px 24px!important;border-radius:24px!important}.welcome-text h1{font-size:38px!important}.admin-menu{top:0!important}.dashboard-grid{grid-template-columns:1fr!important}.nav-button-label{display:none}.brand .logo-subtitle{display:none}nav>div:last-child{gap:2px}.ui-theme-toggle{width:38px;height:38px}}
+
+</style>
+
+
+<style id="mzugoss-requested-colour-update">
+/* =========================================================
+   MZUGOSS REQUESTED COLOUR UPDATE
+   - No navigation visibility/tab redesign
+   - Only changes the upper navigation colour
+   - Student Sign In and Back use the same green family
+     already used by the original MZUGOSS controls
+   ========================================================= */
+
+/* Attractive upper navigation */
+#librarianSystem > nav,
+nav {
+  background: linear-gradient(135deg, #075b36 0%, #0b7a47 52%, #19a463 100%) !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255,255,255,.18) !important;
+  box-shadow: 0 10px 28px rgba(5, 72, 42, .28) !important;
+}
+
+html[data-theme="light"] #librarianSystem > nav,
+html[data-theme="light"] nav {
+  background: linear-gradient(135deg, #16834d 0%, #27ae60 55%, #3bcf78 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Keep the existing navigation buttons, but make their text clear */
+nav button {
+  color: #ffffff !important;
+}
+
+nav button:hover,
+nav button.active {
+  color: #ffffff !important;
+  background: rgba(255,255,255,.14) !important;
+  border-color: rgba(255,255,255,.24) !important;
+}
+
+/* Student panel: Sign In button must stay green, not blue/purple */
+#studentPanel .student-login-box button {
+  background: #27ae60 !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(39,174,96,.22) !important;
+}
+
+#studentPanel .student-login-box button:hover {
+  background: #219150 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Student panel: the Back button also uses the same green */
+#studentPanel .student-login-box button[onclick="backToDashboards()"] {
+  background: #27ae60 !important;
+  color: #ffffff !important;
+}
+
+#studentPanel .student-login-box button[onclick="backToDashboards()"]:hover {
+  background: #219150 !important;
+  color: #ffffff !important;
+}
+
+/* The generated Back button in the Student header */
+#studentPanel .student-panel-header .ui-back-button {
+  background: #27ae60 !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,.28) !important;
+}
+
+#studentPanel .student-panel-header .ui-back-button:hover {
+  background: #219150 !important;
+  color: #ffffff !important;
+}
+</style>
+
+
+<style id="mzugoss-green-navigation-all-dashboards">
+/* =========================================================
+   MZUGOSS GREEN NAVIGATION — ALL DASHBOARDS
+   Same attractive green navigation treatment everywhere.
+   ========================================================= */
+
+/* Dashboard navigation bars */
+#librarianSystem > nav,
+#studentPanel .student-panel-header {
+  background: linear-gradient(135deg, #075b36 0%, #0b7a47 52%, #19a463 100%) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,.18) !important;
+  box-shadow: 0 10px 28px rgba(5,72,42,.28) !important;
+}
+
+/* Administrator: green belongs on the TOP page header
+   where "MZUGOSS Administrator Panel" is displayed.
+   Keep the Dashboard/tab area below it in its normal styling. */
+#adminPanel .admin-header {
+  background: linear-gradient(135deg, #075b36 0%, #0b7a47 52%, #19a463 100%) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 10px 28px rgba(5,72,42,.28) !important;
+}
+
+#adminPanel .admin-header h1,
+#adminPanel .admin-header p {
+  color: #ffffff !important;
+}
+
+/* Restore the Administrator dashboard/tab navigation area */
+#adminPanel .admin-menu {
+  border: 1px solid var(--line) !important;
+  background: rgba(255,255,255,.72) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+#adminPanel .admin-menu .admin-tab,
+#adminPanel .admin-menu > button:not(.admin-tab) {
+  color: #56647d !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+#adminPanel .admin-menu .admin-tab:hover,
+#adminPanel .admin-menu > button:not(.admin-tab):hover {
+  background: #ffffff !important;
+  color: var(--primary) !important;
+  border-color: transparent !important;
+}
+
+#adminPanel .admin-menu .admin-tab.active,
+#adminPanel .admin-menu .admin-tab[aria-current="page"] {
+  background: linear-gradient(135deg,#3157d5,#5577ef) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Student dashboard header/navigation area */
+#studentPanel .student-panel-header {
+  border-bottom: 1px solid rgba(255,255,255,.20) !important;
+}
+
+#studentPanel .student-panel-header h1,
+#studentPanel .student-panel-header p {
+  color: #ffffff !important;
+}
+
+/* Student header Back button */
+#studentPanel .student-panel-header .ui-back-button {
+  background: rgba(255,255,255,.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,.28) !important;
+}
+
+#studentPanel .student-panel-header .ui-back-button:hover {
+  background: rgba(255,255,255,.22) !important;
+  color: #ffffff !important;
+}
+
+/* Bottom/footer navigation bar */
+footer {
+  background: linear-gradient(135deg, #075b36 0%, #0b7a47 52%, #19a463 100%) !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(255,255,255,.20) !important;
+  box-shadow: 0 -10px 28px rgba(5,72,42,.24) !important;
+}
+
+footer p,
+footer strong {
+  color: #ffffff !important;
+}
+
+/* Light mode keeps the same green navigation identity */
+html[data-theme="light"] #librarianSystem > nav,
+html[data-theme="light"] #studentPanel .student-panel-header,
+html[data-theme="light"] #adminPanel .admin-header,
+html[data-theme="light"] footer {
+  background: linear-gradient(135deg, #16834d 0%, #27ae60 55%, #3bcf78 100%) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] #adminPanel .admin-header h1,
+html[data-theme="light"] #adminPanel .admin-header p {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] #adminPanel .admin-menu {
+  background: rgba(255,255,255,.72) !important;
+  color: var(--text) !important;
+}
 </style>
 
 </head>
@@ -3009,6 +3583,8 @@ LIBRARIAN SYSTEM
 
 
 </nav>
+<div id="librarianApprovalNotification" class="librarian-approval-notification" role="status" aria-live="polite"><div class="librarian-approval-notification-icon">✓</div><div><strong id="librarianApprovalTitle">Request Approved</strong><div id="librarianApprovalText">A borrowing request has been approved.</div></div><button type="button" onclick="hideLibrarianApprovalNotification()" aria-label="Close notification">×</button></div>
+
 
 
 
@@ -7469,24 +8045,8 @@ function displayBooks(){
 
 
 
-   <button
-
-    class="borrow-book-btn"
-
-    onclick="borrowBook(${book.id})"
-
-    ${book.available <= 0 ? "disabled" : ""}>
-
-
-
-    ${book.available > 0
-
-      ? " Borrow"
-
-      : "Unavailable"}
-
-
-
+   <button class="borrow-book-btn" onclick="borrowBook(${book.id})">
+    Borrow
    </button>
 
 
@@ -8325,31 +8885,7 @@ function lookupBookByBarcode(purpose){
 
 
   if(book.available <= 0){
-
-
-
-   result.innerHTML = `
-
-
-
-    <div class="lookup-error">
-
-
-
-      ${escapeHTML(book.title)}
-
-     has no available copies.
-
-
-
-    </div>
-
-
-
-   `;
-
-
-
+   result.innerHTML = `<div class="lookup-result"><strong>${escapeHTML(book.title)}</strong> has no free copies.<br>A student with an approved request can still collect the reserved copy.</div>`;
   }else{
 
 
@@ -8608,8 +9144,7 @@ function borrowBook(id){
 
 
 
- if(!book || book.available <= 0)
-
+ if(!book)
   return;
 
 
@@ -8942,81 +9477,36 @@ function findBorrowStudent(){
 
  if(student){
 
+  document.getElementById("studentForm").value = student.form;
 
+  document.getElementById("borrowStudentSearch").dataset.studentId = student.libraryId;
 
-  document.getElementById(
+  const currentBook = selectedBookId ? books.find(b => b.id === selectedBookId) : null;
 
-   "studentForm"
+  const approvedRequest = currentBook ? requests.find(req =>
+   req.approved === true &&
+   req.libraryId === student.libraryId &&
+   (String(req.bookId) === String(currentBook.id) ||
+    String(req.bookTitle).toLowerCase() === String(currentBook.title).toLowerCase())
+  ) : null;
 
-  ).value =
+  let requestStatus = `<div class="lookup-error" style="margin-top:10px"><strong>BOOK NOT YET CONFIRMED</strong><br>Select or scan the book first so the system can check this student's approved request.</div>`;
 
-   student.form;
-
-
-
-
-
-  document.getElementById(
-
-   "borrowStudentSearch"
-
-  ).dataset.studentId =
-
-   student.libraryId;
-
-
-
-
+  if(currentBook && approvedRequest){
+   requestStatus = `<div class="lookup-result" style="margin-top:10px;background:#e9fff1;border-color:#77d99a;color:#126b36"><strong>STUDENT CAN BORROW THIS BOOK</strong><br>This student acquired a borrowing position by sending a request, and the request was <strong>APPROVED</strong>.${currentBook.available <= 0 ? '<br>There are currently 0 free copies, but this approved reservation can still be issued to this student.' : ''}</div>`;
+  }else if(currentBook){
+   requestStatus = `<div class="lookup-error" style="margin-top:10px"><strong>NOT APPROVED FOR THIS BOOK</strong><br>This student has not been approved to borrow <strong>${escapeHTML(currentBook.title)}</strong>. The book cannot be issued to this student.</div>`;
+  }
 
   infoDiv.innerHTML = `
-
-
-
    <div class="lookup-result">
-
-
-
-    <strong>Student Found</strong>
-
-
-
-    <br>
-
-
-
-    Name:
-
-    ${escapeHTML(student.name)}
-
-
-
-    <br>
-
-
-
-    Library ID:
-
-    ${escapeHTML(student.libraryId)}
-
-
-
-    <br>
-
-
-
-    Form:
-
-    ${escapeHTML(student.form)}
-
-
-
+    <strong>Student Found</strong><br>
+    Name: ${escapeHTML(student.name)}<br>
+    Library ID: ${escapeHTML(student.libraryId)}<br>
+    Form: ${escapeHTML(student.form)}
    </div>
-
-
-
+   ${requestStatus}
   `;
-
-
 
  }else{
 
@@ -9098,391 +9588,111 @@ CONFIRM BORROW
 
 function confirmBorrow(){
 
+ const studentInput = document.getElementById("borrowStudentSearch");
+ const studentLibraryId = studentInput.dataset.studentId;
+ const student = students.find(s => s.libraryId === studentLibraryId);
+ const book = books.find(b => b.id === selectedBookId);
 
-
- const studentInput =
-
-  document.getElementById(
-
-   "borrowStudentSearch"
-
-  );
-
-
-
-
-
- const studentLibraryId =
-
-  studentInput.dataset.studentId;
-
-
-
-
-
- const student =
-
-  students.find(
-
-   s => s.libraryId === studentLibraryId
-
-  );
-
-
-
-
-
- const book =
-
-  books.find(
-
-   b => b.id === selectedBookId
-
-  );
-
-
-
-
-
- const bookNumber =
-
-  document.getElementById(
-
-   "borrowBookNumber"
-
-  ).value.trim();
-
-
-
-
-
- const borrowDate =
-
-  document.getElementById(
-
-   "borrowDate"
-
-  ).value;
-
-
-
-
-
- const dueDate =
-
-  document.getElementById(
-
-   "dueDate"
-
-  ).value;
-
-
-
-
+ const bookNumber = document.getElementById("borrowBookNumber").value.trim();
+ const borrowDate = document.getElementById("borrowDate").value;
+ const dueDate = document.getElementById("dueDate").value;
 
  if(!student){
-
-
-
-  alert(
-
-   "Please select a valid registered student."
-
-  );
-
-
-
+  alert("Please select a valid registered student.");
   return;
-
-
-
  }
-
-
-
-
 
  if(!book){
-
-
-
-  alert(
-
-   "Please scan or select a valid book."
-
-  );
-
-
-
+  alert("Please scan or select a valid book.");
   return;
-
-
-
  }
-
-
-
-
 
  if(!bookNumber){
-
-
-
-  alert(
-
-   "Please scan the book barcode."
-
-  );
-
-
-
+  alert("Please scan the book barcode.");
   return;
-
-
-
  }
 
-
-
-
-
- if(
-
-  String(book.barcode).toLowerCase() !==
-
-  bookNumber.toLowerCase()
-
- ){
-
-
-
-  alert(
-
-   "The scanned barcode does not match the selected book."
-
-  );
-
-
-
+ if(String(book.barcode).toLowerCase() !== bookNumber.toLowerCase()){
+  alert("The scanned barcode does not match the selected book.");
   return;
-
-
-
  }
 
-
-
-
-
- if(book.available <= 0){
-
-
-
-  alert(
-
-   "Book is currently unavailable."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- if(!borrowDate || !dueDate){
-
-
-
-  alert(
-
-   "Please enter borrow and due dates."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- if(
-
-  new Date(dueDate) <
-
-  new Date(borrowDate)
-
- ){
-
-
-
-  alert(
-
-   "Due date cannot be before the borrow date."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- const alreadyBorrowed =
-
-  borrowed.some(
-
-   b =>
-
-    !b.returned &&
-
-    b.studentId === student.libraryId &&
-
-    b.bookId === book.id
-
-  );
-
-
-
-
-
- if(alreadyBorrowed){
-
-
-
-  alert(
-
-   "This student already has this book on loan."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- book.available--;
-
-
-
-
-
- borrowed.unshift({
-
-
-
-  id:Date.now(),
-
-
-
-  bookId:book.id,
-
-
-
-  studentId:student.libraryId,
-
-
-
-  studentName:student.name,
-
-
-
-  studentForm:student.form,
-
-
-
-  bookTitle:book.title,
-
-
-
-  bookAuthor:book.author,
-
-
-
-  bookNumber:book.barcode,
-
-
-
-  category:book.category,
-
-
-
-  borrowDate,
-
-
-
-  dueDate,
-
-
-
-  returned:false,
-
-
-
-  overdue:false,
-
-
-
-  overdueNotified:false
-
-
-
- });
-
-
-
-
-
- saveData();
-
-
-
- updateStats();
-
-
-
- showToast(
-
-  " Book borrowed successfully!"
-
+ /*
+  * A librarian may issue a book only when the student has an
+  * approved request for THIS exact book. An approved request is
+  * the student's acquired/reserved position, so the physical
+  * catalogue can show 0 available while this student can still
+  * collect the reserved copy.
+  */
+ const approvedRequest = requests.find(req =>
+  req.approved === true &&
+  req.libraryId === student.libraryId &&
+  (
+   String(req.bookId) === String(book.id) ||
+   String(req.bookTitle).toLowerCase() === String(book.title).toLowerCase()
+  )
  );
 
+ if(!approvedRequest){
+  alert("Borrowing is not allowed. This student has no confirmed request for this book.");
+  return;
+ }
 
+ if(!borrowDate || !dueDate){
+  alert("Please enter borrow and due dates.");
+  return;
+ }
 
+ if(new Date(dueDate) < new Date(borrowDate)){
+  alert("Due date cannot be before the borrow date.");
+  return;
+ }
+
+ const alreadyBorrowed = borrowed.some(b =>
+  !b.returned &&
+  b.studentId === student.libraryId &&
+  b.bookId === book.id
+ );
+
+ if(alreadyBorrowed){
+  alert("This student already has this book on loan.");
+  return;
+ }
+
+ /*
+  * The request already reserved/decreased one copy when it was sent.
+  * Therefore do NOT decrement book.available again.
+  */
+ borrowed.unshift({
+  id:Date.now(),
+  bookId:book.id,
+  studentId:student.libraryId,
+  studentName:student.name,
+  studentForm:student.form,
+  bookTitle:book.title,
+  bookAuthor:book.author,
+  bookNumber:book.barcode,
+  category:book.category,
+  borrowDate,
+  dueDate,
+  returned:false,
+  overdue:false,
+  overdueNotified:false,
+  requestId:approvedRequest.id,
+  acquiredByRequest:true
+ });
+
+ // The confirmed request has now been fulfilled by the librarian.
+ requests = requests.filter(req => req.id !== approvedRequest.id);
+
+ saveData();
+ updateStats();
+ displayRequests();
+ updateMessageCounts();
+
+ showToast("Confirmed request verified. Book borrowed successfully!");
  showPage("books");
-
-
-
 }
-
-
-
-
 
 /* =========================================================
 
@@ -10907,6 +11117,7 @@ function displayRequests(){
 
 
      </button>
+     <button class="delete-book-btn small-btn" onclick="deleteRequestById(${req.id})">Delete Request</button>
 
 
 
@@ -10946,278 +11157,65 @@ APPROVE REQUEST
 
 function approveRequest(idx){
 
-
-
- const req =
-
-  requests[idx];
-
-
-
-
-
- if(!req)
-
-  return;
-
-
-
-
+ const req = requests[idx];
+ if(!req) return;
 
  const book =
   books.find(b => b.id === req.bookId) ||
-  books.find(b => b.title.toLowerCase() === req.bookTitle.toLowerCase());
+  books.find(b => String(b.title).toLowerCase() === String(req.bookTitle).toLowerCase());
 
-
-
-
-
- if(!book || (book.available <= 0 && !req.reserved)){
-  alert("Book is currently unavailable.");
+ if(!book){
+  alert("The requested book is no longer in the catalogue.");
   return;
  }
 
-
-
-
-
- const student =
-
-  students.find(
-
-   s =>
-
-    s.libraryId ===
-
-    req.libraryId
-
-  );
-
-
-
-
+ const student = students.find(s => s.libraryId === req.libraryId);
 
  if(!student){
-
-
-
-  alert(
-
-   "The student is no longer registered."
-
-  );
-
-
-
+  alert("The student is no longer registered.");
   return;
-
-
-
  }
 
-
-
-
-
- const alreadyBorrowed =
-
-  borrowed.some(
-
-   b =>
-
-    !b.returned &&
-
-    b.studentId === req.libraryId &&
-
-    b.bookId === book.id
-
-  );
-
-
-
-
-
- if(alreadyBorrowed){
-
-
-
-  alert(
-
-   "This student already has this book."
-
-  );
-
-
-
-  return;
-
-
-
- }
-
-
-
-
-
- const borrowDate = req.borrowDate || new Date().toISOString().split("T")[0];
-
- const dueDate = req.dueDate || (() => {
-  const d = new Date(borrowDate + "T00:00:00");
-  d.setDate(d.getDate() + 14);
-  return d.toISOString().split("T")[0];
- })();
-
- if(!req.reserved){
-  book.available--;
- }
-
-
-
-
-
- borrowed.unshift({
-
-
-
-  id:Date.now(),
-
-
-
-  bookId:book.id,
-
-
-
-  studentId:req.libraryId,
-
-
-
-  studentName:req.studentName,
-
-
-
-  studentForm:student.form,
-
-
-
-  bookTitle:book.title,
-
-
-
-  bookAuthor:book.author,
-
-
-
-  bookNumber:book.barcode,
-
-
-
-  category:book.category,
-
-
-
-  borrowDate,
-
-
-
-  dueDate,
-
-
-
-  returned:false,
-
-
-
-  overdue:false,
-
-
-
-  overdueNotified:false
-
-
-
- });
-
-
-
-
-
- requests.splice(idx,1);
-
-
-
-
-
- messages.unshift({
-
-
-
-  type:"request-message",
-
-
-
-  text:
-
-   ` APPROVED: ${req.studentName} was issued "${book.title}".`,
-
-
-
-  date:
-
-   new Date().toLocaleString(),
-
-
-
-  studentName:req.studentName,
-
-
-
-  studentId:req.libraryId,
-
-
-
-  studentForm:student.form,
-
-
-
-  bookTitle:book.title
-
-
-
- });
-
-
-
-
-
- saveData();
-
-
-
- updateStats();
-
-
-
- displayRequests();
-
-
-
- updateMessageCounts();
-
-
-
- showToast(
-
-  " Request approved and book issued!"
-
+ const alreadyBorrowed = borrowed.some(b =>
+  !b.returned &&
+  b.studentId === req.libraryId &&
+  b.bookId === book.id
  );
 
+ if(alreadyBorrowed){
+  alert("This student already has this book.");
+  return;
+ }
 
+ /*
+  * Approval confirms the student's acquisition/reservation.
+  * It does NOT physically issue the book yet.
+  * The request remains stored until the librarian enters the
+  * student's name at the Borrow screen and completes the issue.
+  */
+ req.approved = true;
+ req.approvedDate = new Date().toLocaleString();
+ req.bookId = book.id;
+ req.bookTitle = book.title;
 
+ messages.unshift({
+  type:"request-message",
+  text:`APPROVED: ${req.studentName} is confirmed to borrow "${book.title}". The copy is reserved for the student.`,
+  date:new Date().toLocaleString(),
+  studentName:req.studentName,
+  studentId:req.libraryId,
+  studentForm:student.form,
+  bookTitle:book.title
+ });
+
+ saveData();
+ updateStats();
+ displayRequests();
+ updateMessageCounts();
+
+ showToast("Request approved. The student now has a reserved borrowing position.");
+ showLibrarianApprovalNotification(req.studentName, book.title);
 }
-
-
-
-
 
 /* =========================================================
 
@@ -11242,6 +11240,9 @@ function rejectRequest(idx){
  if(!req)
 
   return;
+
+ const requestedBook = books.find(b => b.id === req.bookId) || books.find(b => String(b.title).toLowerCase() === String(req.bookTitle).toLowerCase());
+ if(requestedBook && requestedBook.available < requestedBook.quantity) requestedBook.available++;
 
 
 
@@ -11972,24 +11973,13 @@ function displayRequestMessages(){
     ${escapeHTML(req.date)}
 
    </p>
+   <p><strong>Status:</strong> <span class="book-status ${req.approved ? 'status-available' : 'status-unavailable'}">${req.approved ? 'APPROVED / RESERVED' : 'PENDING APPROVAL'}</span></p>
 
 
 
 
 
-   <button
-
-    class="approve-btn small-btn"
-
-    onclick="approveRequestById(${req.id})">
-
-
-
-    Approve
-
-
-
-   </button>
+   <button class="approve-btn small-btn" onclick="approveRequestById(${req.id})" ${req.approved ? 'disabled' : ''}>${req.approved ? 'Approved' : 'Approve'}</button>
 
 
 
@@ -12008,6 +11998,7 @@ function displayRequestMessages(){
 
 
    </button>
+   <button class="delete-book-btn small-btn" onclick="deleteRequestById(${req.id})">Delete Request</button>
 
 
 
@@ -12030,6 +12021,21 @@ function displayRequestMessages(){
 
 
 
+
+/* =========================================================
+DELETE REQUEST
+========================================================= */
+function deleteRequestById(id){
+ const index=requests.findIndex(r=>r.id===id);
+ if(index<0) return;
+ const req=requests[index];
+ if(!confirm(`Delete the request from ${req.studentName} for "${req.bookTitle}"?`)) return;
+ const requestedBook=books.find(b=>b.id===req.bookId)||books.find(b=>String(b.title).toLowerCase()===String(req.bookTitle).toLowerCase());
+ if(requestedBook && requestedBook.available < requestedBook.quantity) requestedBook.available++;
+ requests.splice(index,1);
+ saveData(); updateStats(); displayRequests(); displayRequestMessages(); updateMessageCounts();
+ showToast("Request deleted and the reserved copy was released.","#c0392b");
+}
 
 /* =========================================================
 
@@ -12582,93 +12588,50 @@ STUDENT ACCOUNT
 
 function renderStudentAccount(){
 
-
-
- const profile =
-
-  document.getElementById(
-
-   "studentProfile"
-
-  );
-
-
-
-
+ const profile = document.getElementById("studentProfile");
 
  profile.innerHTML = `
+  <div class="student-id-card">
+   <div class="student-id-top">
+    <div class="student-id-school">
+     <span class="student-id-mark" aria-hidden="true">M</span>
+     <div>
+      <strong>MZUGOSS LIBRARY SYSTEM</strong>
+      <small>Mzuzu Government Secondary School</small>
+     </div>
+    </div>
+    <div class="student-id-title">STUDENT ID CARD</div>
+   </div>
 
+   <div class="student-id-body">
+    <img
+     class="student-id-photo"
+     src="${loggedInStudent.photo || DEFAULT_STUDENT_PHOTO}"
+     alt="Student photo">
 
-
-  <img
-
-   src="${loggedInStudent.photo || DEFAULT_STUDENT_PHOTO}"
-
-   alt="Photo">
-
-
-
-
-
-  <div>
-
-
-
-   <h2>
-
-    ${escapeHTML(loggedInStudent.name)}
-
-   </h2>
-
-
-
-   <p>
-
-    <strong>Library ID:</strong>
-
-    ${escapeHTML(loggedInStudent.libraryId)}
-
-   </p>
-
-
-
-   <p>
-
-    <strong>Form:</strong>
-
-    ${escapeHTML(loggedInStudent.form)}
-
-   </p>
-
-
-
+    <div class="student-id-details">
+     <div class="student-id-row">
+      <span>Name</span>
+      <strong>${escapeHTML(loggedInStudent.name)}</strong>
+     </div>
+     <div class="student-id-row">
+      <span>Student ID</span>
+      <strong>${escapeHTML(loggedInStudent.libraryId)}</strong>
+     </div>
+     <div class="student-id-row">
+      <span>Form</span>
+      <strong>${escapeHTML(loggedInStudent.form)}</strong>
+     </div>
+    </div>
+   </div>
   </div>
-
-
-
  `;
 
-
-
-
-
  displayStudentBooks();
-
-
-
  displayStudentMyRequests();
-
-
-
  displayStudentBorrowed();
 
-
-
 }
-
-
-
-
 
 /* =========================================================
 STUDENT ACCOUNT SETTINGS
@@ -16726,6 +16689,71 @@ try{ refreshAllBookShelves(); saveData(); }catch(e){ console.warn("Shelf migrati
     var tab = e.target.closest && e.target.closest('#adminPanel .admin-tab');
     if(tab) markAdminTab(tab.getAttribute('data-section'));
   });
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   MZUGOSS PREMIUM INTERACTION LAYER
+   ========================================================= */
+(function(){
+  const ICONS={
+    home:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/>',
+    books:'<path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 0-2 2V4Z"/><path d="M7 20h12"/><path d="M9 8h7M9 12h7M9 16h5"/>',
+    borrow:'<path d="M5 6h13l-1.5 9H7L5 6Z"/><path d="M3 4h3l1 2"/><circle cx="9" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/>',
+    message:'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5.5 4v-4.5A2.5 2.5 0 0 1 4 13.5v-8Z"/><path d="M8 8h8M8 12h5"/>',
+    dashboard:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    students:'<circle cx="12" cy="8" r="3"/><path d="M5 21c.8-4.1 3-6 7-6s6.2 1.9 7 6"/>',
+    add:'<path d="M12 5v14M5 12h14"/><rect x="4" y="4" width="16" height="16" rx="3"/>',
+    import:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+    alumni:'<circle cx="12" cy="7" r="3"/><path d="M5 21c.8-4.5 3-7 7-7s6.2 2.5 7 7"/><path d="M19 4v4M17 6h4"/>',
+    back:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+    logout:'<path d="M10 5H5v14h5"/><path d="M14 8l4 4-4 4M9 12h9"/>',
+    settings:'<path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="m19.4 15 .1.1-1.8 3.1-.2-.1-1.8-1a8 8 0 0 1-2 .8L13.5 20h-3l-.2-2.1a8 8 0 0 1-2-.8l-1.8 1-.2.1-1.8-3.1.1-.1 1.6-1.2a7.7 7.7 0 0 1 0-1.6L4.6 11l-.1-.1 1.8-3.1.2.1 1.8 1a8 8 0 0 1 2-.8L10.5 6h3l.2 2.1a8 8 0 0 1 2 .8l1.8-1 .2-.1 1.8 3.1-.1.1-1.6 1.2a7.7 7.7 0 0 1 0 1.6Z"/>',
+    search:'<circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/>',
+    theme:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+  };
+  function icon(name){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[name]||ICONS.dashboard)+'</svg>'}
+  function keyFor(text){
+    const t=(text||'').toLowerCase().replace(/[^a-z ]/g,' ');
+    if(/home/.test(t))return'home'; if(/book/.test(t)&&/borrow/.test(t))return'borrow'; if(/borrow/.test(t))return'borrow'; if(/message|request/.test(t))return'message';
+    if(/student/.test(t))return'students'; if(/alumni/.test(t))return'alumni'; if(/dashboard/.test(t))return'dashboard'; if(/register|add/.test(t))return'add'; if(/file|import/.test(t))return'import'; if(/back/.test(t))return'back'; if(/logout|exit/.test(t))return'logout'; if(/setting/.test(t))return'settings'; return'dashboard';
+  }
+  function decorateNav(){
+    document.querySelectorAll('nav button,.admin-tab,.message-tabs button,.alumni-tab').forEach(btn=>{
+      if(btn.querySelector('.ui-icon,.nav-svg')) return;
+      const label=btn.textContent.trim(); if(!label)return;
+      const span=document.createElement('span'); span.className='ui-icon'; span.innerHTML=icon(keyFor(label));
+      btn.prepend(span);
+    });
+  }
+  function addThemeToggle(){
+    document.querySelectorAll('nav').forEach(nav=>{
+      if(nav.querySelector('.ui-theme-toggle'))return;
+      const b=document.createElement('button'); b.className='ui-theme-toggle'; b.type='button'; b.title='Toggle light / dark mode'; b.setAttribute('aria-label','Toggle light and dark mode'); b.innerHTML=icon('theme');
+      b.onclick=()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='light'?'dark':'light';localStorage.setItem('mz_theme',document.documentElement.dataset.theme)};
+      nav.querySelector(':scope > div:last-child')?.appendChild(b);
+    });
+  }
+  function addBacks(){
+    const backAction=()=>{ if(typeof backToDashboards==='function') backToDashboards(); else if(typeof logout==='function') logout(); };
+    document.querySelectorAll('.admin-header,.student-panel-header').forEach(h=>{
+      if(h.querySelector('.ui-back-button'))return;
+      const b=document.createElement('button'); b.className='ui-back-button'; b.type='button'; b.innerHTML=icon('back')+'<span>Back</span>'; b.onclick=backAction; b.style.cssText='position:absolute;right:22px;top:50%;transform:translateY(-50%);z-index:3;'; h.appendChild(b);
+    });
+    document.querySelectorAll('nav').forEach(nav=>{
+      if(nav.querySelector('#adminReturnButton'))return;
+      const candidates=[...nav.querySelectorAll('button')];
+      const b=document.createElement('button'); b.className='ui-back-button'; b.type='button'; b.innerHTML=icon('back')+'<span>Back</span>'; b.onclick=backAction; nav.querySelector(':scope > div:last-child')?.appendChild(b);
+    });
+  }
+  function restoreTheme(){
+    const saved=localStorage.getItem('mz_theme'); document.documentElement.dataset.theme=saved||'dark';
+  }
+  function enhance(){restoreTheme();decorateNav();addThemeToggle();addBacks();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enhance);else enhance();
+  new MutationObserver(()=>{decorateNav();addThemeToggle();}).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
